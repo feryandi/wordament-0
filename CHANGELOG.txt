@@ -1,0 +1,15 @@
+
+CHANGELOG
+
+---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+Format:
+<tanggal dan waktu> - <pengubah>
+<jenis ubahan>
+<apa saja yang diubah>
+---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+
+4/11/2014 23:24 - dummy
+Tes Changelog
+* Membuat file changelog.txt
+* Membuat file readme.txt
+* Tidur
