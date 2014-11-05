@@ -13,3 +13,16 @@ Tes Changelog
 * Membuat file changelog.txt
 * Membuat file readme.txt
 * Tidur
+
+5/11/2014 21:44 - feryandi
+Login System
+* Menambahkan file auth.c pada module
+* Merubah driver.c
+* Register
+  Gunakan fungsi registerUser(<nama_user>), fungsi ini akan
+  mengeluarkan boolean
+* Login
+  Gunakan fungsi loginUser(<nama_user>), fungsi ini akan
+  mengeluarkan boolean
+  
+  
