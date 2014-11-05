@@ -1,6 +1,7 @@
 #include "global.h"
 #include "save.c"
 #include "load.c"
+#include "auth.c"
 
 int main() {
 	/* Kamus Lokal */
@@ -25,7 +26,7 @@ int main() {
     printf("- - - - - - - - - - - -\n");
 
     GetSuggestion("", 3, "rakarukri");
-*/
+
 
     MakeMATRIKS(&M);
 
@@ -35,7 +36,20 @@ int main() {
         for ( n = 1; n <= 4; n++ ) {
             printf("%c", GetElmt(M,i,n));
         }
+    }*/
+
+    if (registerUser("rakarukri")) {
+        printf("registered");
+    } else {
+        printf("failed");
     }
+
+    if (loginUser("cliff")) {
+        printf("login auth");
+    } else {
+        printf("failed");
+    }
+
 
     return 0;
 }
