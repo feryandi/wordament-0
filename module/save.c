@@ -125,7 +125,7 @@ void save(char word[18], int target, char user[62], int t) {
             }
             fprintf(file_save, "\n");
         }
-        printf("procced\n", X.NbElmt);
+        printf("procced");
 
         fprintf(file_save, ".");
         fclose(file_save);
@@ -146,8 +146,13 @@ void saveScore(int score, int target, char user[62]) {
     char buff[12];
     char word[20];
 
+	time_now[0] = '\0';
+	buff[0] = '\0';
+	word[0] = '\0';
+
     time_t t = time(NULL);
     struct tm waktu = *localtime(&t);
+
 
     sprintf(buff, "%d", waktu.tm_mday);
     strcat(time_now, buff);

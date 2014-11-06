@@ -26,7 +26,6 @@ void BuatJudul()
     a = 0;
     ordinat = 3;
 
-    /*--*/
     while(a < 13)
     {
         gotoxy(30,ordinat);

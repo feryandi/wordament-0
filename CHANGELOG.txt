@@ -25,4 +25,9 @@ Login System
   Gunakan fungsi loginUser(<nama_user>), fungsi ini akan
   mengeluarkan boolean
   
-  
+6/11/2014 23:15 - feryandi
+Dictionary!
+* import seluruh kata ke kamus menggunakan: 
+			getDictionary(TabKamus (*T))
+* cari tahu apakah ada kata tersebut dalam kamus menggunakan:
+			isOnKamus (char word[18], TabKamus X) -> boolean

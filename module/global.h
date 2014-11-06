@@ -9,11 +9,17 @@
 #include "../adt/jam/jam.c"
 #include "../adt/matriks/matriks.c"
 #include "../adt/stack/stack.c"
+//#include "../adt/array/array.c" HARUS PAKE ARRAY STRING, BANYAK BANGET YG HARUS DIGANTI
 
 typedef struct {
     int NbElmt;
     Kata TI[10000]; //??
 } TabStr;
+
+typedef struct {
+    int NbElmt;
+    char TI[109013][18]; //??
+} TabKamus;
 
 typedef struct {
 	int D;
@@ -38,6 +44,18 @@ void save(char word[18], int target, char user[62], int t);
 void saveWord(char word[18], int target, char user[62]);
 void saveScore(int score, int target, char user[62]);
 
+/* load.c */
+void getBoard (int target, MATRIKS *M);
+void GetSuggestion (char word[18], int target, char user[62]);
+TimeArray SortByHS ( TimeArray T );
+TimeArray ListUserHS (int target, char user[62]);
+
+/* auth.c */
+boolean searchUser (TabStr X, char word[30]);
+boolean registerUser(char word[30]);
+boolean loginUser(char word[30]);
+
+/* word.c */
 void BuatJudul();
 void BuatBoard();
 /* Board ukuran 4x4 blok besar */

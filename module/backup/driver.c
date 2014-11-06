@@ -2,25 +2,20 @@
 #include "save.c"
 #include "load.c"
 #include "auth.c"
-#include "dict.c"
-
-	/* Kamus Global */
-    TimeArray test;
-    TabKamus D;
-    MATRIKS M;
-    char matx[5][5];
-    char word[18];
-    int i, n, TotalWords, j, k;
-    boolean found;
 
 int main() {
+	/* Kamus Lokal */
+     TimeArray test;
+    int i, n;
+    char matx[5][5];
+    MATRIKS M;
 
 	/* Algoritma */
-/*
+
     saveWord("APYA", 3, "rakarukri");
 	saveWord("APYAZ", 3, "rakarukri");
 	saveScore(973,3,"feryandi");
-
+/*
 
     test = ListUserHS(3, "feryandi");
 
@@ -41,7 +36,7 @@ int main() {
         for ( n = 1; n <= 4; n++ ) {
             printf("%c", GetElmt(M,i,n));
         }
-    }
+    }*/
 
     if (registerUser("rakarukri")) {
         printf("registered");
@@ -53,20 +48,8 @@ int main() {
         printf("login auth");
     } else {
         printf("failed");
-    }*/
-
-
-    for ( i=0; i <= 109013; i++ ) {
-        D.TI[i][0] = '\0';
     }
 
-
-    getDictionary(&D);
-
-    printf("\n");
-    scanf("Cari kata: %s", word);
-
-    if ( isOnKamus(word, D) ) { printf("found"); } else { printf("not found"); }
 
     return 0;
 }
