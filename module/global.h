@@ -9,6 +9,7 @@
 #include "../adt/jam/jam.c"
 #include "../adt/matriks/matriks.c"
 #include "../adt/stack/stack.c"
+#include "../adt/queue/queue.c"
 //#include "../adt/array/array.c" HARUS PAKE ARRAY STRING, BANYAK BANGET YG HARUS DIGANTI
 
 typedef struct {
@@ -38,6 +39,8 @@ typedef struct {
     HScore get[100];
 } TimeArray;
 
+extern TabKamus K;
+
 /* save.c */
 boolean searchWord (TabStr X, char word[18]);
 void save(char word[18], int target, char user[62], int t);
@@ -62,10 +65,10 @@ void BuatBoard();
 /* Tiap blok besar ukuran 5x3 (x y) */
 
 void IsiBoard(MATRIKS *M);
-void PointerBoard(MATRIKS M, Stack *S, char *kata);
+void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK);
 void PointerIsi();
 void SimbolAktif(MATRIKS M, Stack *S);
 void HapusSimbol(int x, int y);
-void EndWord();
+void EndWord(Stack *S, char kata[18], boolean *endK);
 
 #endif

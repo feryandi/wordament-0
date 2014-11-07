@@ -2,6 +2,7 @@
 
 #define prime 109013
 
+
 int getHash ( int multi, char word[18] ) {
     int n, h, a;
 
@@ -28,7 +29,7 @@ int getHash ( int multi, char word[18] ) {
 
 }
 
-boolean isOnKamus (char word[18], TabKamus X) {
+boolean isOnKamus (char word[18]) {
     int i, j, k;
     boolean found;
 
@@ -40,10 +41,11 @@ boolean isOnKamus (char word[18], TabKamus X) {
 
         found = true;
         k = 0;
-        while ( (found) && ( k < strlen(word) )) {
-            if ( word[k] != X.TI[j][k] ) {
+        while ( (found) && ( k <= strlen(word) )) {
+            if ( word[k] != K.TI[j][k] ) {
                 found = false;
             }
+
             k++;
         }
 
@@ -52,6 +54,33 @@ boolean isOnKamus (char word[18], TabKamus X) {
 
     return found;
 }
+
+int realHash (char word[18]) {
+    int i, j, k;
+    boolean found;
+
+    i = 0;
+    found = false;
+
+    while ( (i <= 12966) && (!found) ) {
+        j = getHash(i,word);
+
+        found = true;
+        k = 0;
+        while ( (found) && ( k <= strlen(word) )) {
+            if ( word[k] != K.TI[j][k] ) {
+                found = false;
+            }
+
+            k++;
+        }
+
+        i++;
+    }
+
+    if (found) { return j; } else { return 0; }
+}
+
 
 void getDictionary(TabKamus (*T)) {
 	/* Kamus Lokal */

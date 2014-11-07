@@ -6,7 +6,7 @@
 /* dan ukuran sama */
 /* TOP adalah alamat elemen puncak */
 #define Nil 0 /* Nil adalah stack dengan elemen kosong */
-#define MaxEl 10
+#define MaxEl 18
 #define TOP(S) (S).TOP
 #define Infotop(S) (S).T[(S).TOP]
 #define PosX(K) (K).posx

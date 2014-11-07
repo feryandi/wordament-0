@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <windows.h>
 #include "global.h"
+#include "dict.c"
 
 /* Kamus Global */
+extern boolean endGame;
 int absis,ordinat,simpanabsis,simpanordinat, count;
 boolean aktif, discovered[5][5];
 
@@ -25,6 +27,9 @@ void BuatJudul()
     // Algoritma
     a = 0;
     ordinat = 3;
+
+    gotoxy(35,20);
+    printf("ALPHA 0.1");
 
     while(a < 13)
     {
@@ -111,23 +116,26 @@ void IsiBoard(MATRIKS *M)
     }
 }
 
-void PointerBoard(MATRIKS M, Stack *S, char *kata)
-{
-    // Kamus Lokal
-    boolean endgame;
+void initBoard () {
     int i, j;
-    // Algoritma
+
     count = 0;
     absis = 36;
     ordinat = 10;
-    gotoxy(absis,ordinat);
-    endgame = false;
     for (i=1;i<=4;i++)
         for (j=1;j<=4;j++)
             discovered[i][j] = false;
 
-    while(!endgame)
-    {
+}
+
+void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
+{
+    // Kamus Lokal
+    int i, j;
+    // Algoritma
+    gotoxy(absis,ordinat);
+
+
         switch(getch())
         {
         case 'q':
@@ -232,17 +240,22 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata)
                     aktif = true;
                 }
                 else
-                    EndWord(S, kata);
+                    EndWord(S, (kata), endK);
                 break;
             }
         case 'l':
             {
-                gotoxy(26,22);
-                endgame = true;
+                gotoxy(30,22);
+                endGame = true;
+                printf("GAME ENDS");
+
                 break;
             }
+        default:
+                gotoxy(30,22);
+            printf("doesn't recognized the input");
         }
-    }
+
 }
 
 void SimbolAktif(MATRIKS M, Stack *S)
@@ -275,8 +288,8 @@ void SimbolAktif(MATRIKS M, Stack *S)
         PosY(K) = ordinat;
         Info(K) = GetElmt(M, (ordinat-2)/4, (absis-24)/6);
         Push(S, K);
-        gotoxy(30, 24 + count);
-        printf("%d %d %c", PosX(Infotop(*S)), PosY(Infotop(*S)), Info(Infotop(*S)));
+        //gotoxy(30, 24 + count);
+        //printf("%d %d %c", PosX(Infotop(*S)), PosY(Infotop(*S)), Info(Infotop(*S)));
         gotoxy(absis,ordinat);
         discovered[(ordinat-2)/4][(absis-24)/6] = true;
         count++;
@@ -295,24 +308,35 @@ void HapusSimbol(int x, int y)
     gotoxy(x,y);
 }
 
-void EndWord(Stack *S, char *kata)
+void EndWord(Stack *S, char kata[18], boolean *endK)
 {
     // Kamus Lokal
     infotype K;
     int i, j;
 
     // Algoritma
+    i = TOP(*S);
     aktif = false;
     while (IsEmpty(*S) == false)
     {
         Pop(S, &K);
-        kata[TOP(*S)] = Info(K);
+        (kata)[TOP(*S)] = Info(K);
         HapusSimbol(PosX(K), PosY(K));
     }
+    (kata)[i] = '\0';
+
     absis = PosX(K);
     ordinat = PosY(K);
-    for (i=1;i<=4;i++)
-        for (j=1;j<=4;j++)
+    for (i=1;i<=4;i++) {
+        for (j=1;j<=4;j++) {
             discovered[i][j] = false;
+        }
+    }
+
+    gotoxy(30,22);
+    printf("                           ");
+    gotoxy(30,22);
+
+    (*endK) = true;
 }
 

@@ -6,8 +6,9 @@
 
 	/* Kamus Global */
     TimeArray test;
-    TabKamus D;
+    TabKamus K;
     MATRIKS M;
+    Queue Q;
     char matx[5][5];
     char word[18];
     int i, n, TotalWords, j, k;
@@ -16,7 +17,7 @@
 int main() {
 
 	/* Algoritma */
-/*
+
     saveWord("APYA", 3, "rakarukri");
 	saveWord("APYAZ", 3, "rakarukri");
 	saveScore(973,3,"feryandi");
@@ -53,20 +54,26 @@ int main() {
         printf("login auth");
     } else {
         printf("failed");
-    }*/
-
-
-    for ( i=0; i <= 109013; i++ ) {
-        D.TI[i][0] = '\0';
     }
 
 
-    getDictionary(&D);
+    for ( i=0; i <= 109013; i++ ) {
+        K.TI[i][0] = '\0';
+    }
+
+
+    getDictionary(&K);
 
     printf("\n");
     scanf("Cari kata: %s", word);
 
-    if ( isOnKamus(word, D) ) { printf("found"); } else { printf("not found"); }
+    if ( isOnKamus(word) ) { printf("found"); } else { printf("not found"); }
+
+    printf("%d", realHash("FOUND"));
+
+    Q = getSuggestion(3, "rakarukri");
+
+    TulisQueue(Q);
 
     return 0;
 }

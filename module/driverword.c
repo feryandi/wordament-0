@@ -3,17 +3,24 @@
 #include <windows.h>
 #include "global.h"
 #include "word.c"
+#include "load.c"
+
+TabKamus Dict;
+char kata[18];
+boolean endK, endGame;
 
 int main ()
 {
     // Kamus
     MATRIKS M;
     Stack S;
-    char kata[16];
     int randomint, i, j;
     // Algoritma
     system("Color 30");
     BuatJudul();
+
+    getDictionary(&Dict);
+
     getch();
     system("cls");
     BuatBoard();
@@ -21,17 +28,28 @@ int main ()
     /**Matriks**/
     MakeMATRIKS(&M);
     CreateEmpty(&S);
-    for(i=1;i<=4;i++)
-    {
-        for(j=1;j<=4;j++)
-        {
-            randomint = rand()%26+1;
-            SetEl(&M, i, j, randomint+64);
-        }
-    }
+    getBoard(3, &M);
     /**       **/
     IsiBoard(&M);
-    PointerBoard(M, &S, &kata);
+
+    initBoard();
+
+    while ( ( !endK ) && ( !endGame ) ) {
+        PointerBoard(M, &S, kata, &endK);
+
+        if ( endK == true ) {
+            if ( isOnKamus(kata, Dict) ) {
+                printf("%s is in dictionary", kata);
+            } else {
+                printf("%s is wrong", kata);
+            }
+        }
+
+        endK = false;
+    }
+
+
+
     printf("\n");
     //gotoxy(30,22);
     //TulisMATRIKS(M);

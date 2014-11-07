@@ -47,6 +47,66 @@ void getBoard (int target, MATRIKS *M) {
 
 }
 
+Queue getSuggestion ( int target, char user[62] ) {
+    /* Kamus Lokal */
+    int i;
+    char file_dir[90];
+    char *board;
+    char word[18];
+    Queue Q;
+
+    CreateEmptyQ(&Q, 1000);
+
+    /* Algoritma */
+    file_dir[0] = '\0';
+
+	strcat(file_dir, "../saves/");
+
+    switch (target) {
+    case 0: board = "0"; break;
+    case 1: board = "1"; break;
+    case 2: board = "2"; break;
+    case 3: board = "3"; break;
+    case 4: board = "4"; break;
+    case 5: board = "5"; break;
+    case 6: board = "6"; break;
+    case 7: board = "7"; break;
+    case 8: board = "8"; break;
+    case 9: board = "9"; break;
+    default: board = "3";
+    }
+
+	if ( target == 99 ) {
+        strcat(file_dir, "template");
+    } else {
+        strcat(file_dir, "board");
+        strcat(file_dir, board);
+	}
+
+    strcat(file_dir, "/words/");
+	strcat(file_dir, user);
+    strcat(file_dir, ".txt");
+
+    STARTKATA(file_dir,"r", 1);
+    i = 0;
+
+    while (!EndKata) {
+
+        for (i = 1; i <= CKata.Length; i++ ){
+            word[i-1] = CKata.TabKata[i];
+        }
+        word[i-1] = '\0';
+
+        AddQ(&Q, realHash(word));
+        printf("s: %d\n", realHash(word));
+
+        ADVKATA(1);
+    }
+
+    return Q;
+
+}
+
 void GetSuggestion (char word[18], int target, char user[62]) {
     /* Kamus Lokal */
     int i;
