@@ -10,6 +10,7 @@
 #include "../adt/matriks/matriks.c"
 #include "../adt/stack/stack.c"
 #include "../adt/queue/queue.c"
+//#include "../adt/list/list.c"
 //#include "../adt/array/array.c" HARUS PAKE ARRAY STRING, BANYAK BANGET YG HARUS DIGANTI
 
 typedef struct {

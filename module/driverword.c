@@ -5,7 +5,7 @@
 #include "word.c"
 #include "load.c"
 
-TabKamus Dict;
+TabKamus K;
 char kata[18];
 boolean endK, endGame;
 
@@ -19,7 +19,7 @@ int main ()
     system("Color 30");
     BuatJudul();
 
-    getDictionary(&Dict);
+    getDictionary(&K);
 
     getch();
     system("cls");
@@ -38,7 +38,7 @@ int main ()
         PointerBoard(M, &S, kata, &endK);
 
         if ( endK == true ) {
-            if ( isOnKamus(kata, Dict) ) {
+            if ( isOnKamus(kata) ) {
                 printf("%s is in dictionary", kata);
             } else {
                 printf("%s is wrong", kata);
