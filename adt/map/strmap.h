@@ -1,39 +1,3 @@
-/*
- *    strmap version 2.0.1
- *
- *    ANSI C hash table for strings.
- *
- *	  Version history:
- *	  1.0.0 - initial release
- *	  2.0.0 - changed function prefix from strmap to sm to ensure
- *	      ANSI C compatibility
- *	  2.0.1 - improved documentation 
- *
- *    strmap.h
- *
- *    Copyright (c) 2009, 2011, 2013 Per Ola Kristensson.
- *
- *    Per Ola Kristensson <pok21@cam.ac.uk> 
- *    Inference Group, Department of Physics
- *    University of Cambridge
- *    Cavendish Laboratory
- *    JJ Thomson Avenue
- *    CB3 0HE Cambridge
- *    United Kingdom
- *
- *    strmap is free software: you can redistribute it and/or modify
- *    it under the terms of the GNU Lesser General Public License as published by
- *    the Free Software Foundation, either version 3 of the License, or
- *    (at your option) any later version.
- *
- *    strmap is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *    GNU Lesser General Public License for more details.
- *
- *    You should have received a copy of the GNU Lesser General Public License
- *    along with strmap.  If not, see <http://www.gnu.org/licenses/>.
- */
 #ifndef _STRMAP_H_
 #define _STRMAP_H_
 
@@ -116,10 +80,6 @@ int sm_put(StrMap *map, const char *key, const char *value);
  *
  * Return value: The number of associations between keys and values.
  */
- 
- int Map (char key);
- 
- void Score(Stack *S, int *score);
  
 #ifdef __cplusplus
 }

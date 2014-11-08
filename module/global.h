@@ -71,4 +71,8 @@ void SimbolAktif(MATRIKS M, Stack *S);
 void HapusSimbol(int x, int y);
 void EndWord(Stack *S, char kata[18], boolean *endK);
 
+/*Pake ADT map */
+int Map (char key);
+void Score(Stack *S, int *score);
+
 #endif

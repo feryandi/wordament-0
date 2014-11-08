@@ -340,3 +340,61 @@ void EndWord(Stack *S, char kata[18], boolean *endK)
     (*endK) = true;
 }
 
+ int Map (char key)
+ {
+	StrMap *sm;
+	char buf[255];
+	int result;
+	int val;
+
+	sm = sm_new(30);
+	if (sm != NULL) {
+	sm_put(sm, "E", "1");
+	sm_put(sm, "A", "11");
+	sm_put(sm, "I", "11");
+	sm_put(sm, "N", "11");
+	sm_put(sm, "O", "11");
+	sm_put(sm, "R", "11");
+	sm_put(sm, "S", "11");
+	sm_put(sm, "T", "11");
+	sm_put(sm, "C", "111");
+	sm_put(sm, "D", "111");
+	sm_put(sm, "L", "111");
+	sm_put(sm, "G", "1111");
+	sm_put(sm, "H", "1111");
+	sm_put(sm, "M", "1111");
+	sm_put(sm, "P", "1111");
+	sm_put(sm, "U", "1111");
+	sm_put(sm, "B", "11111");
+	sm_put(sm, "F", "11111");
+	sm_put(sm, "Y", "11111");
+	sm_put(sm, "K", "111111");
+	sm_put(sm, "V", "111111");
+	sm_put(sm, "W", "111111");
+	sm_put(sm, "Z", "11111111");
+	sm_put(sm, "X", "111111111");
+	sm_put(sm, "Q", "1111111111");
+	sm_put(sm, "J", "1111111111");
+
+	result = sm_get(sm, &key, buf, sizeof(buf));
+	if (result != 0) {
+	val = strlen(buf);
+	return val;
+	}
+	}
+ }
+ 
+ void Score(Stack *S, int *score)
+ {
+	int sum=0;
+	int count=0;
+	char X;
+	while (!IsEmpty(*S)) {
+		Pop(S,&X);
+		count++;
+		sum = sum+Map(X);
+		}
+	score = sum*count;
+	if (count>=10)
+		score += 100;
+ }
