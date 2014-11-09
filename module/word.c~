@@ -183,6 +183,181 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
 	}
 }
 
+/* original
+void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
+{
+    // Kamus Lokal
+    int i, j;
+    // Algoritma
+    absisboard = 28;
+    ordinatboard = 7;
+    gotoxy(absisboard,ordinatboard);
+    gotoxy(absis,ordinat);
+
+
+        switch(getch())
+        {
+        case 'q':
+            {
+                if ((absis >= 36)&&(ordinat >= 10))
+                {
+                    absisboard -= 8;
+                    ordinat -= 4;
+                    absis -= 6;
+                    ordinat -= 4;
+                    gotoxy(absis,ordinat);
+                    if (aktif == true)
+                        SimbolAktif(M, S);
+                }
+                break;
+            }
+        case 'w':
+            {
+                if (ordinat >= 10)
+                {
+                    ordinat -= 4;
+                    gotoxy(absis,ordinat);
+                    if (aktif == true)
+                        SimbolAktif(M, S);
+                }
+                break;
+            }
+        case 'e':
+            {
+                if ((absis <= 42)&&(ordinat >= 10))
+                {
+                    absis += 6;
+                    ordinat -= 4;
+                    gotoxy(absis,ordinat);
+                    if (aktif == true)
+                        SimbolAktif(M, S);
+                }
+                break;
+            }
+        case 'a':
+            {
+                if (absis >= 36)
+                {
+                    absis -= 6;
+                    gotoxy(absis,ordinat);
+                    if (aktif == true)
+                        SimbolAktif(M, S);
+                }
+                break;
+            }
+        case 'd':
+            {
+                if (absis <= 42)
+                {
+                    absis += 6;
+                    gotoxy(absis,ordinat);
+                    if (aktif == true)
+                        SimbolAktif(M, S);
+                }
+                break;
+            }
+        case 'z':
+            {
+                if ((absis >= 36)&&(ordinat <= 14))
+                {
+                    absis -= 6;
+                    ordinat += 4;
+                    gotoxy(absis,ordinat);
+                    if (aktif == true)
+                        SimbolAktif(M, S);
+                }
+                break;
+            }
+        case 'x':
+            {
+                if (ordinat <= 14)
+                {
+                    ordinat += 4;
+                    gotoxy(absis,ordinat);
+                    if (aktif == true)
+                        SimbolAktif(M, S);
+                }
+                break;
+            }
+        case 'c':
+            {
+                if ((absis <= 42)&&(ordinat <= 14))
+                {
+                    absis += 6;
+                    ordinat += 4;
+                    gotoxy(absis,ordinat);
+                    if (aktif == true)
+                        SimbolAktif(M, S);
+                }
+                break;
+            }
+        case 's':
+            {
+                simpanabsis = absis;
+                simpanordinat = ordinat;
+                if (aktif == false)
+                {
+                    SimbolAktif(M, S);
+                    aktif = true;
+                }
+                else
+                    EndWord(S, (kata), endK);
+                break;
+            }
+        case 'l':
+            {
+                gotoxy(30,22);
+                endGame = true;
+                printf("GAME ENDS");
+
+                break;
+            }
+        default:
+                gotoxy(30,22);
+            printf("doesn't recognized the input");
+        }
+
+}*/
+
+/*original
+void SimbolAktif(MATRIKS M, Stack *S)
+{
+    // Kamus Lokal
+    infotype K;
+
+    // Algoritma
+    if (discovered[(ordinat-2)/4][(absis-24)/6])
+    {
+
+        while ((PosX(Infotop(*S)) != absis) || (PosY(Infotop(*S)) != ordinat))
+        {
+            HapusSimbol(PosX(Infotop(*S)), PosY(Infotop(*S)));
+            discovered[(PosY(Infotop(*S))-2)/4][(PosX(Infotop(*S))-24)/6] = false;
+            Pop(S, &K);
+        }
+        absis = PosX(Infotop(*S));
+        ordinat = PosY(Infotop(*S));
+        gotoxy(absis, ordinat);
+    }
+    else
+    {
+        gotoxy(absis-1,ordinat);
+        printf("[");
+        gotoxy(absis+1,ordinat);
+        printf("]");
+        gotoxy(absis,ordinat);
+        PosX(K) = absis;
+        PosY(K) = ordinat;
+        Info(K) = GetElmt(M, (ordinat-2)/4, (absis-24)/6);
+        Push(S, K);
+        //gotoxy(30, 24 + count);
+        //printf("%d %d %c", PosX(Infotop(*S)), PosY(Infotop(*S)), Info(Infotop(*S)));
+        gotoxy(absis,ordinat);
+        discovered[(ordinat-2)/4][(absis-24)/6] = true;
+        count++;
+    }
+}*/
+
 void SimbolAktif(MATRIKS M, Stack *S)
 {
     // Kamus Lokal

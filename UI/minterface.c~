@@ -1,0 +1,13 @@
+#include "Menu.c"
+
+int main()
+{
+    // Kamus
+
+    // Algoritma
+	clrscr();
+    BuatJudul();
+    BuatMenu();
+    gotoxy(0,22);
+    return 0;
+}

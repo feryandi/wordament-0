@@ -39,3 +39,13 @@ Stack Overflow!
 	 telah dijadikan variabel global yang bisa dipakai kapanpun
 	 dan dimanapun selama telah diinisiasi getDirectory(K);
 * RELEASE: driverword.c - ver. alpha 0.1
+
+9/11/2014 14:17 - rakarukri
+BIG UPDATE
+* Update UI (kalibrasi ulang koordinat)
+
+* Sistem baru ( getch(void), gotoxy(void), clrscr(void), Hide/ShowCursor(void) dan warna text(di UI/interface.h))
+
+* Sinkronisasi file lama (Windows) ke Linux
+
+* Note : Hanya bisa dijalankan di Linux (driverword.c)

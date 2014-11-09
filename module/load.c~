@@ -47,8 +47,9 @@ void getBoard (int target, MATRIKS *M) {
 
 }
 
+/*
 Queue getSuggestion ( int target, char user[62] ) {
-    /* Kamus Lokal */
+    // Kamus Lokal
     int i;
     char file_dir[90];
     char *board;
@@ -57,7 +58,7 @@ Queue getSuggestion ( int target, char user[62] ) {
 
     CreateEmptyQ(&Q, 1000);
 
-    /* Algoritma */
+    // Algoritma
     file_dir[0] = '\0';
 
 	strcat(file_dir, "../saves/");
@@ -108,14 +109,14 @@ Queue getSuggestion ( int target, char user[62] ) {
 }
 
 void GetSuggestion (char word[18], int target, char user[62]) {
-    /* Kamus Lokal */
+    // Kamus Lokal
     int i;
     char file_dir[90];
     char *board;
     char suggest[18];
     boolean partof;
 
-    /* Algoritma */
+    // Algoritma
     file_dir[0] = '\0';
 
 	strcat(file_dir, "../saves/");
@@ -175,6 +176,7 @@ void GetSuggestion (char word[18], int target, char user[62]) {
         printf("No Suggestion");
     }
 }
+*/
 
 TimeArray SortByHS ( TimeArray T ) {
     /* Kamus Lokal */

@@ -9,7 +9,7 @@ boolean endK, endGame;
 
 int main ()
 {
-    HideCursor();
+    printf("\e[?25l"); //Hide Cursor
     // Kamus
     MATRIKS M;
     Stack S;
@@ -32,7 +32,7 @@ int main ()
     getBoard(3, &M);
     /**       **/
     IsiBoard(&M);
-    ShowCursor();
+    printf("\e[?25h"); //Show Cursor
 
     initBoard();
 

@@ -54,13 +54,6 @@ b. load.c - mengambil data dari folder saves sesuai deng
 c. word.c - berisi cara kerja permainan dan cara mengambil
             kata yang dibentuk oleh user ke dalam stack
 
-d. dict.c - mengambil kamus, dan juga membentuknya. Berisi
-	    juga fungsi hash yang digunakan serta pencarian
-	    hash suatu kata
-
-e. auth.c - berisi fungsi untuk memvalidasi suatu login dan
-	    register
-
 NOTE: 
 Gunakan global.h untuk menambah variabel global, 
 fungsi baru atau ADT baru agar tertata rapi.
@@ -110,11 +103,6 @@ Silahkan gunakan file ini sebagai salah satu bagian
 dari changelog sehingga memudahkan pengkodingan bersama.
 
 
---- --- --- --- --- --- --- --- --- --- --- --- --- ---
-5. RELEASE(S)
---- --- --- --- --- --- --- --- --- --- --- --- --- ---
-ALPHA STAGE
-v0.1 (7/11/2014)
 
 
 --- --- --- --- --- END OF FILE --- --- --- --- ---
