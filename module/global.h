@@ -13,7 +13,7 @@
 #include "../adt/queue/queue.c"
 //#include "../adt/list/list.c"
 //<<<<<<< HEAD
-#include "../UI/Interface.h"
+//#include "../UI/Interface.h" /*karena di driverword udah diinclude ga perlu diinclude lagi */
 //=======
 //>>>>>>> origin/master
 //#include "../adt/array/array.c" HARUS PAKE ARRAY STRING, BANYAK BANGET YG HARUS DIGANTI
@@ -45,7 +45,12 @@ typedef struct {
     HScore get[100];
 } TimeArray;
 
-extern TabKamus K;
+/* GLOBAL VARIABLE */
+/* You can use it everywhere selama sudah diisi */
+extern TabKamus K; /* diisi di driverword.c oleh getDictionary */
+extern char username[30] ; /* diisi di auth.c oleh loginUser */
+extern boolean logged; /* diisi di auth.c oleh loginUser */
+extern int selectedBoard; /* diisi di <?> oleh <?> */
 
 /* save.c */
 boolean searchWord (TabStr X, char word[18]);

@@ -49,3 +49,7 @@ BIG UPDATE
 * Sinkronisasi file lama (Windows) ke Linux
 
 * Note : Hanya bisa dijalankan di Linux (driverword.c)
+
+9/11/2014 20:14 - feryandi
+Authentication
+* Autentikasi sekarang dibutuhkan buat masuk ke game (menu register dan login sudah aktif)

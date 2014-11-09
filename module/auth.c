@@ -1,5 +1,8 @@
 #include "global.h"
 
+char username[30];
+boolean logged;
+
 boolean searchUser (TabStr X, char word[30]) {
     /* Kamus Lokal */
     int i, n;
@@ -18,6 +21,7 @@ boolean searchUser (TabStr X, char word[30]) {
                     n = X.TI[i].Length + 1;
                     temp = false;
                 }
+				//printf("%c", word[n]);
                 n++;
             }
         } else {
@@ -32,6 +36,80 @@ boolean searchUser (TabStr X, char word[30]) {
     }
 
     return found;
+}
+
+void makeFileUser(char word[30]) {
+
+    FILE *file_save;
+    char file_dir[90];
+    char file_fdir[40];
+    int i;
+    char *board;
+
+	/* Algoritma */
+    file_dir[0] = '\0';
+
+	i = 0;
+
+    for ( i = 0; i <= 9; i++ ) {
+        file_dir[0] = '\0';
+
+        strcat(file_dir, "../saves/board");
+
+		switch (i) {
+		case 0: board = "0"; break;
+		case 1: board = "1"; break;
+		case 2: board = "2"; break;
+		case 3: board = "3"; break;
+		case 4: board = "4"; break;
+		case 5: board = "5"; break;
+		case 6: board = "6"; break;
+		case 7: board = "7"; break;
+		case 8: board = "8"; break;
+		case 9: board = "9"; break;
+		default: board = "0";
+		}
+
+        strcat(file_dir, board);
+        strcat(file_dir, "/highscore/");
+        strcat(file_dir, word);
+        strcat(file_dir, ".txt");
+
+        file_save = fopen(file_dir, "w+");
+            fprintf(file_save, ".");
+        fclose(file_save);
+
+    }
+
+    for ( i = 0; i <= 9; i++ ) {
+        file_dir[0] = '\0';
+
+        strcat(file_dir, "../saves/board");
+
+		switch (i) {
+		case 0: board = "0"; break;
+		case 1: board = "1"; break;
+		case 2: board = "2"; break;
+		case 3: board = "3"; break;
+		case 4: board = "4"; break;
+		case 5: board = "5"; break;
+		case 6: board = "6"; break;
+		case 7: board = "7"; break;
+		case 8: board = "8"; break;
+		case 9: board = "9"; break;
+		default: board = "0";
+		}
+
+        strcat(file_dir, board);
+        strcat(file_dir, "/words/");
+        strcat(file_dir, word);
+        strcat(file_dir, ".txt");
+
+        file_save = fopen(file_dir, "w+");
+            fprintf(file_save, ".");
+        fclose(file_save);
+
+    }
 }
 
 boolean registerUser(char word[30]) {
@@ -95,6 +173,7 @@ boolean registerUser(char word[30]) {
         fprintf(file_save, ".");
         fclose(file_save);
 
+        makeFileUser(word);
         return true;
 
     } else {
@@ -130,9 +209,11 @@ boolean loginUser(char word[30]) {
 
         X.NbElmt += 1;
 
+		//printf("%s", X.TI[n].TabKata);
+
         n++;
         ADVKATA(1);
-    }
+	}
 
     // Check if the username is available
     if ( searchUser(X, word) ) {
@@ -143,7 +224,10 @@ boolean loginUser(char word[30]) {
 
 
     if ( granted ) {
-
+		
+		username[0] = '\0';
+		strcat(username, word);
+		logged = true;
         return true;
 
     } else {

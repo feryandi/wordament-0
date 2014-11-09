@@ -28,9 +28,11 @@ void initBoard ()
     count = 0;
     absis = 28;
     ordinat = 7;
-    for (i=1;i<=4;i++)
-        for (j=1;j<=4;j++)
+    for (i=1;i<=4;i++) {
+        for (j=1;j<=4;j++) {
             discovered[i][j] = false;
+		}
+	}
 }
 
 
@@ -44,6 +46,7 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
 
     switch(getch())
     {
+	case 'Q':
     case 'q':
     	{
     		if((absis >= 36)&&(ordinat >= 11))
@@ -58,6 +61,7 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
                 }
 			break;
 		}
+		case 'W':
         case 'w':
             {
                 if (ordinat >= 11)
@@ -71,6 +75,7 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
                 }
                 break;
             }
+		case 'E':
         case 'e':
             {
                 if ((absis <= 44)&&(ordinat >= 10))
@@ -85,6 +90,7 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
                 }
                 break;
             }
+		case 'A':
         case 'a':
             {
                 if (absis >= 36)
@@ -98,6 +104,7 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
                 }
                 break;
             }
+		case 'D':
         case 'd':
             {
                 if (absis <= 44)
@@ -111,6 +118,7 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
                 }
                 break;
             }
+		case 'Z':
         case 'z':
             {
                 if ((absis >= 36)&&(ordinat <= 15))
@@ -125,6 +133,7 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
                 }
                 break;
             }
+		case 'X':
         case 'x':
             {
                 if (ordinat <= 15)
@@ -138,6 +147,7 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
                 }
                 break;
             }
+		case 'C':
         case 'c':
             {
                 if ((absis <= 44)&&(ordinat <= 15))
@@ -152,6 +162,7 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
                 }
                 break;
             }
+		case 'S':
         case 's':
             {
                 simpanabsis = absis;
@@ -167,6 +178,7 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
 				}
                 break;
             }
+		case 'L':
         case 'l':
             {
                 gotoxy(30,22);
@@ -176,8 +188,8 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
             }
         default:
         	{
-                gotoxy(30,22);
-            	printf("doesn't recognized the input");
+                //gotoxy(30,22);
+            	//printf("");
             	break;
             }
 	}
@@ -263,9 +275,9 @@ void EndWord(Stack *S, char kata[18], boolean *endK)
         }
     }
 
-    gotoxy(30,22);
-    printf("                           ");
-    gotoxy(30,22);
+    gotoxy(4,6);
+    printf("                    ");
+    gotoxy(4,6);
 
     (*endK) = true;
 }

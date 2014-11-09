@@ -5,6 +5,7 @@
 #include <string.h>
 #include "boolean.h"
 #include "sistem.c"
+#include "../module/auth.c"
 
 // Color
 #define KNRM "\x1B[0m"	// normal
@@ -35,6 +36,7 @@ void BuatJudul();
 void BuatMenu();
 void BuatSubJudul();
 void LoginScreen();
+void RegisterScreen();
 
 /* Board */
 void BuatBoard();

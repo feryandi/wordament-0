@@ -6,18 +6,23 @@
 TabKamus K;
 char kata[18];
 boolean endK, endGame;
+boolean logged;
 
 int main ()
 {
     HideCursor();
+	logged = false;
     // Kamus
     MATRIKS M;
     Stack S;
     int randomint, i, j;
     // Algoritma
-    clrscr();
-    BuatJudul();
-    BuatMenu();
+
+	while (!logged) {
+  		clrscr();
+		BuatJudul();
+		BuatMenu();
+	}
 
     getDictionary(&K);
 
@@ -25,7 +30,7 @@ int main ()
 	clrscr();
 	
     BuatBoard();
-    srand(time(NULL));
+    //srand(time(NULL));
     /**Matriks**/
     MakeMATRIKS(&M);
     CreateEmpty(&S);
@@ -40,10 +45,15 @@ int main ()
         PointerBoard(M, &S, kata, &endK);
 
         if ( endK == true ) {
+            printf("%s", kata);
+    		gotoxy(4,7);
+    		printf("                    ");
+    		gotoxy(4,7);
+
             if ( isOnKamus(kata) ) {
-                printf("%s is in dictionary", kata);
+    			printf("is on Dictionary!");
             } else {
-                printf("%s is wrong", kata);
+    			printf("is not valid!");
             }
         }
 

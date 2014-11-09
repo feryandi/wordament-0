@@ -65,6 +65,7 @@ void BuatMenu()
     {
         switch(getch())
         {
+		case 'X':
         case 'x':
             {
                 if(ordinat < 15)
@@ -127,6 +128,7 @@ void BuatMenu()
                 }
                 break;
             }
+		case 'W':
         case 'w':
             {
                 if(ordinat > 7)
@@ -189,12 +191,13 @@ void BuatMenu()
                 }
                 break;
             }
+		case'S':
         case's':
         	{
         		end = true;
         		break;
         	}
-		}   
+		}
 	}
 	switch(lokasi)
     {
@@ -203,6 +206,7 @@ void BuatMenu()
       		/* Ke Register */
        		clrscr();
        		BuatSubJudul();
+			RegisterScreen();
        		break;
        	}
     case 'l':
@@ -226,7 +230,7 @@ void BuatMenu()
        		clrscr();
        		BuatSubJudul();
        		break;
-       	}	
+       	}
     case 'q':
        	{
        		gotoxy(45,18);
@@ -278,19 +282,58 @@ void BuatSubJudul()
 			gotoxy(36,ordinat);
 			printf("A B O U T");
 			break;
-		}    
+		}
     }
 }
 
 void LoginScreen()
 {
 	// Kamus Lokal
-		
+    char user[30];
+
 	// Algoritma
 	absis = 35;
-	ordinat = 7;
+	ordinat = 9;
 	gotoxy(absis,ordinat);
-	printf("Username =");
+	printf("Username = ");
+	scanf("%s", user);
+
+    while ( !loginUser(user) ) {
+        absis = 35;
+        ordinat = 7;
+        gotoxy(absis,ordinat);
+        printf("Login data invalid!");
+        gotoxy(absis,ordinat+2);
+        printf("                                ");
+        gotoxy(absis,ordinat+2);
+        printf("Username = ");
+        scanf("%s", user);
+    }
+}
+
+void RegisterScreen()
+{
+	// Kamus Lokal
+    char user[30];
+
+	// Algoritma
+	absis = 35;
+	ordinat = 9;
+	gotoxy(absis,ordinat);
+	printf("Username = ");
+	scanf("%s", user);
+
+    while ( !registerUser(user) ) {
+        absis = 35;
+        ordinat = 7;
+        gotoxy(absis,ordinat);
+        printf("Username exist!");
+        gotoxy(absis,ordinat+2);
+        printf("                                ");
+        gotoxy(absis,ordinat+2);
+        printf("Username = ");
+        scanf("%s", user);
+    }
 }
 
 
@@ -298,7 +341,7 @@ void LoginScreen()
 void BuatBoard()
 {
 	// Kamus Lokal
-	
+
 	// Algoritma
 	/* Garis vertikal */
 	absis = 24;
@@ -312,7 +355,7 @@ void BuatBoard()
 		}
 		ordinat += 1;
 	}
-	
+
 	/* Garis Horizontal */
 	absis = 24;
 	ordinat = 5;
@@ -325,7 +368,7 @@ void BuatBoard()
         }
         ordinat += 4;
 	}
-	
+
 	/* Corner */
 	gotoxy(24,5);
 	printf("\e(0%c\e(B", 0x6c);
@@ -335,11 +378,11 @@ void BuatBoard()
 	printf("\e(0%c\e(B", 0x6d);
 	gotoxy(56,21);
 	printf("\e(0%c\e(B", 0x6a);
-	
+
 	/* Border */
 	/* Kanan */
 	absis = 56;
-	ordinat = 9; 
+	ordinat = 9;
 	for(repeat = 0; repeat < 3; repeat++)
 	{
 		gotoxy(absis,ordinat);
@@ -348,7 +391,7 @@ void BuatBoard()
 	}
 	/* Kiri */
 	absis = 24;
-	ordinat = 9; 
+	ordinat = 9;
 	for(repeat = 0; repeat < 3; repeat++)
 	{
 		gotoxy(absis,ordinat);
@@ -357,7 +400,7 @@ void BuatBoard()
 	}
 	/* Atas */
 	absis = 32;
-	ordinat = 5; 
+	ordinat = 5;
 	for(repeat = 0; repeat < 3; repeat++)
 	{
 		gotoxy(absis,ordinat);
@@ -366,7 +409,7 @@ void BuatBoard()
 	}
 	/* Bawah */
 	absis = 32;
-	ordinat = 21; 
+	ordinat = 21;
 	for(repeat = 0; repeat < 3; repeat++)
 	{
 		gotoxy(absis,ordinat);
@@ -375,7 +418,7 @@ void BuatBoard()
 	}
 	/* Dalam */
 	absis = 32;
-	ordinat = 9; 
+	ordinat = 9;
 	for(repeat = 0; repeat < 3; repeat++)
 	{
 		for(repeat2 = 0; repeat2 < 3; repeat2++)
