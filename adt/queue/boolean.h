@@ -5,12 +5,12 @@
 #define boolean int
 #endif
 
-#ifndef true
-#define true 1
+#ifndef TRUE
+#define TRUE 1
 #endif
 
-#ifndef false
-#define false 0
+#ifndef FALSE
+#define FALSE 0
 #endif
 
 #endif

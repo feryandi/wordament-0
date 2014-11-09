@@ -1,7 +1,0 @@
-#include "sistem.c"
-#include "Menu.h"
-
-int main()
-{
-
-}

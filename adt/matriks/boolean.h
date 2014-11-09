@@ -1,16 +1,8 @@
-#ifndef boolean_H
-#define boolean_H
+#ifndef BOOLEAN_H_INCLUDED
+#define BOOLEAN_H_INCLUDED
 
-#ifndef boolean
-#define boolean int
-#endif
-
-#ifndef true
+#define boolean unsigned char
 #define true 1
-#endif
-
-#ifndef false
 #define false 0
-#endif
 
-#endif
+#endif // BOOLEAN_H_INCLUDED
