@@ -102,16 +102,21 @@ sebagai berikut:
 <kata yang pernah ditebak>
 .
 
+--- --- --- --- --- --- --- --- --- --- --- --- --- ---
+4. UI
+--- --- --- --- --- --- --- --- --- --- --- --- --- ---
+Berisi cara kerja user-interface dan pembuatannya.
+
 
 --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-4. DISCLAIMER
+5. DISCLAIMER
 --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 Silahkan gunakan file ini sebagai salah satu bagian
 dari changelog sehingga memudahkan pengkodingan bersama.
 
 
 --- --- --- --- --- --- --- --- --- --- --- --- --- ---
-5. RELEASE(S)
+6. RELEASE(S)
 --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 ALPHA STAGE
 v0.1 (7/11/2014)

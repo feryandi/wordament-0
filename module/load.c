@@ -95,7 +95,7 @@ Queue getSuggestion ( int target, char user[62] ) {
         for (i = 1; i <= CKata.Length; i++ ){
             word[i-1] = CKata.TabKata[i];
         }
-        word[i-1] = '\0';
+        word[i-2] = '\0';
 
         AddQ(&Q, realHash(word));
         printf("s: %d\n", realHash(word));
@@ -161,7 +161,7 @@ void GetSuggestion (char word[18], int target, char user[62]) {
             for ( i = 1; i <= CKata.Length; i++ ) {
                 suggest[i-1] = CKata.TabKata[i];
             }
-            suggest[i-1] = '\0';
+            suggest[i-2] = '\0';
 
             EndKata = true;
         } else {
@@ -320,3 +320,106 @@ TimeArray ListUserHS (int target, char user[62]) {
 
     return temp;
 }
+
+
+/*List ListAllHS (int target) {
+    /* Kamus Lokal
+    List temp;
+    char file_dir[90];
+    char file_user[90];
+    char file_hs[90];
+    char user_list[90][63];
+    int counter;
+    int i, n, user_count;
+    int buff;
+    char *board;
+
+    /* Algoritma
+    CreateList(&temp);
+    file_dir[0] = '\0';
+    file_user[0] = '\0';
+
+	strcat(file_user, "../saves/userlist.txt");
+	strcat(file_dir, "../saves/");
+
+    switch (target) {
+    case 0: board = "0"; break;
+    case 1: board = "1"; break;
+    case 2: board = "2"; break;
+    case 3: board = "3"; break;
+    case 4: board = "4"; break;
+    case 5: board = "5"; break;
+    case 6: board = "6"; break;
+    case 7: board = "7"; break;
+    case 8: board = "8"; break;
+    case 9: board = "9"; break;
+    default: board = "3";
+    }
+
+	if ( target == 99 ) {
+        strcat(file_dir, "template");
+    } else {
+        strcat(file_dir, "board");
+        strcat(file_dir, board);
+	}
+
+    strcat(file_dir, "/highscore/");
+
+
+    STARTKATA(file_user,"r", 1);
+    i = 0;
+    buff = 0;
+    n = 0;
+
+    while (!EndKata) {
+
+        for ( i = 1; i <= CKata.Length; i++ ) {
+            user_list[n][i-1] = CKata.TabKata[i];
+        }
+        user_list[n][i-1] = '\0';
+
+        InsVLast(&temp, n);
+
+        ADVKATA(1);
+        n++;
+    }
+
+    user_count = n - 1;
+
+    STARTKATA(file_dir,"r", 2);
+    i = 0;
+    counter = 0;
+    n = 0;
+
+
+/*
+
+
+    while (!EndKata) {
+
+        if ( counter == 6 ) {
+            counter = 0;
+        }
+        counter++;
+
+        buff = 0;
+
+        for ( i = 1; i <= CKata.Length; i++ ) {
+            buff = (buff * 10) + CKata.TabKata[i] - 48;
+        }
+
+        switch (counter) {
+        case 1:
+            InsVLast(&Child(), buff);
+            break;
+        default:
+            temp.get[temp.NbElmt].t.SS = 00;
+        }
+
+        ADVKATA(2);
+    }
+
+    temp = SortByHS(temp);
+
+    return temp;
+}*/

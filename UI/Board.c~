@@ -1,0 +1,103 @@
+// Note : Ukuran board width = 32, height = 16. Inside : width = 7, height = 3
+// 80-32=48 (start from absis = 24), 24-16=8 (start from ordinat 5)
+
+#include "Board.h"
+
+// Kamus Global
+int repeat,repeat2,absis,ordinat;
+
+
+
+void BuatBoard()
+{
+	// Kamus Lokal
+	
+	// Algoritma
+	/* Garis vertikal */
+	absis = 24;
+	ordinat = 5;
+	for(repeat = 0; repeat < 16; repeat++)
+	{
+		gotoxy(absis,ordinat);
+		for(repeat2 = 0; repeat2 < 5; repeat2++)
+		{
+			printf("\e(0%c       \e(B", 0x78);
+		}
+		ordinat += 1;
+	}
+	
+	/* Garis Horizontal */
+	absis = 24;
+	ordinat = 5;
+	for(repeat = 0; repeat < 5; repeat++)
+	{
+		gotoxy(absis,ordinat);
+		for(repeat2 = 0; repeat2 < 33; repeat2++)
+        {
+        	printf("\e(0%c\e(B", 0x71);
+        }
+        ordinat += 4;
+	}
+	
+	/* Corner */
+	gotoxy(24,5);
+	printf("\e(0%c\e(B", 0x6c);
+	gotoxy(56,5);
+	printf("\e(0%c\e(B", 0x6b);
+	gotoxy(24,21);
+	printf("\e(0%c\e(B", 0x6d);
+	gotoxy(56,21);
+	printf("\e(0%c\e(B", 0x6a);
+	
+	/* Border */
+	/* Kanan */
+	absis = 56;
+	ordinat = 9; 
+	for(repeat = 0; repeat < 3; repeat++)
+	{
+		gotoxy(absis,ordinat);
+		printf("\e(0%c\e(B", 0x75);
+		ordinat += 4;
+	}
+	/* Kiri */
+	absis = 24;
+	ordinat = 9; 
+	for(repeat = 0; repeat < 3; repeat++)
+	{
+		gotoxy(absis,ordinat);
+		printf("\e(0%c\e(B", 0x74);
+		ordinat += 4;
+	}
+	/* Atas */
+	absis = 32;
+	ordinat = 5; 
+	for(repeat = 0; repeat < 3; repeat++)
+	{
+		gotoxy(absis,ordinat);
+		printf("\e(0%c\e(B", 0x77);
+		absis += 8;
+	}
+	/* Bawah */
+	absis = 32;
+	ordinat = 21; 
+	for(repeat = 0; repeat < 3; repeat++)
+	{
+		gotoxy(absis,ordinat);
+		printf("\e(0%c\e(B", 0x76);
+		absis += 8;
+	}
+	/* Dalam */
+	absis = 32;
+	ordinat = 9; 
+	for(repeat = 0; repeat < 3; repeat++)
+	{
+		for(repeat2 = 0; repeat2 < 3; repeat2++)
+		{
+			gotoxy(absis,ordinat);
+			printf("\e(0%c\e(B", 0x6e);
+			absis += 8;
+		}
+		absis = 32;
+		ordinat += 4;
+	}
+}

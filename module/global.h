@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <time.h>
 #include "boolean.h"
 #include "../adt/mesin_kar/mesinkata.c"
@@ -10,6 +11,11 @@
 #include "../adt/matriks/matriks.c"
 #include "../adt/stack/stack.c"
 #include "../adt/queue/queue.c"
+//#include "../adt/list/list.c"
+//<<<<<<< HEAD
+#include "../UI/Interface.h"
+//=======
+//>>>>>>> origin/master
 //#include "../adt/array/array.c" HARUS PAKE ARRAY STRING, BANYAK BANGET YG HARUS DIGANTI
 
 typedef struct {
