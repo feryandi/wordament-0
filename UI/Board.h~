@@ -1,0 +1,12 @@
+#ifndef BOARD_H_INCLUDED
+#define BOARD_H_INCLUDED
+
+#include "sistem.c"
+
+// Kamus Global
+
+// List Prosedur-Fungsi
+void BuatBoard();
+
+
+#endif

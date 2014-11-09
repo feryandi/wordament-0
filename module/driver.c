@@ -17,7 +17,7 @@
 int main() {
 
 	/* Algoritma */
-
+/*
     saveWord("APYA", 3, "rakarukri");
 	saveWord("APYAZ", 3, "rakarukri");
 	saveScore(973,3,"feryandi");
@@ -43,21 +43,21 @@ int main() {
             printf("%c", GetElmt(M,i,n));
         }
     }
-
-    if (registerUser("rakarukri")) {
+*/
+    if (registerUser("aaa")) {
         printf("registered");
     } else {
         printf("failed");
     }
 
-    if (loginUser("cliff")) {
+    if (loginUser("feryandi")) {
         printf("login auth");
     } else {
         printf("failed");
     }
 
 
-    for ( i=0; i <= 109013; i++ ) {
+  /*  for ( i=0; i <= 109013; i++ ) {
         K.TI[i][0] = '\0';
     }
 
@@ -74,6 +74,6 @@ int main() {
     Q = getSuggestion(3, "rakarukri");
 
     TulisQueue(Q);
-
+*/
     return 0;
 }
