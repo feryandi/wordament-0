@@ -12,10 +12,10 @@
 #include "../adt/stack/stack.c"
 #include "../adt/queue/queue.c"
 //#include "../adt/list/list.c"
-<<<<<<< HEAD
+//<<<<<<< HEAD
 #include "../UI/Interface.h"
-=======
->>>>>>> origin/master
+//=======
+//>>>>>>> origin/master
 //#include "../adt/array/array.c" HARUS PAKE ARRAY STRING, BANYAK BANGET YG HARUS DIGANTI
 
 typedef struct {
