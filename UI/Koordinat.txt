@@ -1,0 +1,54 @@
+width = 80
+
+Judul :
+------- (19), 80-19 = 61 => @30
+|     |
+|  W  |
+|     |
+-------
+
+1 2 3 4
+5 6 7 8
+9 0 A B
+C D E F
+
+1 = 30,6
+2 = 36,6
+3 = 42,6
+4 = 48,6
+
+5 = 30,10
+8 = 48,10
+
+9 = 30,14
+B = 48,14
+
+C = 30,18
+F = 48,18
+
+
+
+
+3,5
+S
+simpanabsis = 3
+simpanordinat = 5
+
+3,5
+abissebelum = 3
+ordinatsebelum = 5
+X
+(if not)
+ordinat = 9
+3,9
+absissebelum =
+
+w o r d a m e n t z e r o 13
+
+worda
+?tnem
+zero?
+
+worda
+ment?
+zero?

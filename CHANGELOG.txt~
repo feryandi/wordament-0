@@ -1,0 +1,61 @@
+
+CHANGELOG
+
+---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+Format:
+<tanggal dan waktu> - <pengubah>
+<jenis ubahan>
+<apa saja yang diubah>
+---- ---- ---- ---- ---- ---- ---- ---- ---- ---- 
+
+4/11/2014 23:24 - dummy
+Tes Changelog
+* Membuat file changelog.txt
+* Membuat file readme.txt
+* Tidur
+
+5/11/2014 21:44 - feryandi
+Login System
+* Menambahkan file auth.c pada module
+* Merubah driver.c
+* Register
+  Gunakan fungsi registerUser(<nama_user>), fungsi ini akan
+  mengeluarkan boolean
+* Login
+  Gunakan fungsi loginUser(<nama_user>), fungsi ini akan
+  mengeluarkan boolean
+  
+6/11/2014 23:15 - feryandi
+Dictionary!
+* import seluruh kata ke kamus menggunakan: 
+			getDictionary(TabKamus (*T))
+* cari tahu apakah ada kata tersebut dalam kamus menggunakan:
+			isOnKamus (char word[18], TabKamus X) -> boolean
+
+7/11/2014 23:07 - feryandi
+Stack Overflow!
+* Fixed: stack overflow, sekarang seluruh fungsi/prosedur di dict.c
+	 tidak memerlukan inputan file kamus, karena variable kamus
+	 telah dijadikan variabel global yang bisa dipakai kapanpun
+	 dan dimanapun selama telah diinisiasi getDirectory(K);
+* RELEASE: driverword.c - ver. alpha 0.1
+
+9/11/2014 14:17 - rakarukri
+BIG UPDATE
+* Update UI (kalibrasi ulang koordinat)
+
+* Sistem baru ( getch(void), gotoxy(void), clrscr(void), Hide/ShowCursor(void) dan warna text(di UI/interface.h))
+
+* Sinkronisasi file lama (Windows) ke Linux
+
+* Note : Hanya bisa dijalankan di Linux (driverword.c)
+
+9/11/2014 20:14 - feryandi
+Authentication
+* Autentikasi sekarang dibutuhkan buat masuk ke game (menu register dan login sudah aktif)
+
+9/11/2014 23:59 - rakarukri
+UI - Authentication
+* Autentikasi sudah disinkronisasi dengan UI
+* Pembaharuan UI login - register
+* Revisi changelog = 10/11/2014 00:00 :P

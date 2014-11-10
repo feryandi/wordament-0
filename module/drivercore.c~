@@ -1,0 +1,59 @@
+#include "global.h"
+#include "word.c"
+#include "load.c"
+#include "../UI/Interface.c"
+
+TabKamus K;
+char kata[18];
+boolean endK, endGame;
+
+int main ()
+{
+    printf("\e[?25l"); //Hide Cursor
+    // Kamus
+    MATRIKS M;
+    Stack S;
+    int randomint, i, j;
+    // Algoritma
+    clrscr();
+    BuatJudul();
+    BuatMenu();
+
+    //getDictionary(&K);
+
+    getch();
+	clrscr();
+	
+    BuatBoard();
+    srand(time(NULL));
+    /**Matriks**/
+    MakeMATRIKS(&M);
+    CreateEmpty(&S);
+    getBoard(3, &M);
+    /**       **/
+    IsiBoard(&M);
+    printf("\e[?25h"); //Show Cursor
+
+    initBoard();
+
+    while ( ( !endK ) && ( !endGame ) ) {
+        PointerBoard(M, &S, kata, &endK);
+
+        if ( endK == true ) {
+            if ( isOnKamus(kata) ) {
+                printf("%s is in dictionary", kata);
+            } else {
+                printf("%s is wrong", kata);
+            }
+        }
+
+        endK = false;
+    }
+
+
+
+    printf("\n");
+    getch();
+    gotoxy(0,22);
+    return 0;
+}
