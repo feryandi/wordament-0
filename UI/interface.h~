@@ -33,19 +33,26 @@ printf("%snormal\n", KNRM);
 
 // List Prosedur-Fungsi
 /* Menu */
+<<<<<<< HEAD
 /* CORE */
 void BuatJudul();
 void BuatJudul2();
+=======
+void BuatJudul();
+>>>>>>> origin/master
 void BuatMenu();
 void BuatMenu2();
 void BuatSubJudul();
 void LoginScreen();
 void RegisterScreen();
 
+<<<<<<< HEAD
 /* CREATE */
 void MainMenu();
 void UserMenu();
 
+=======
+>>>>>>> origin/master
 /* Board */
 void BuatBoard();
 

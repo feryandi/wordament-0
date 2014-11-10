@@ -4,11 +4,17 @@
 
 #include "Interface.h"
 #include "../module/auth.c"
+<<<<<<< HEAD
 #include <unistd.h>
 
 // Kamus Global
 int absis,ordinat,repeat,repeat2;
 int numboard = 1;
+=======
+
+// Kamus Global
+int absis,ordinat,repeat,repeat2;
+>>>>>>> origin/master
 char lokasi;
 TabKamus K;
 char kata[18];
@@ -16,14 +22,20 @@ boolean endK, endGame;
 MATRIKS M;
 Stack S;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 									/* ---------- */
 									/*    MENU    */
 									/* ---------- */
 void MainMenu()
 {
 	clrscr();
+<<<<<<< HEAD
 	HideCursor();
+=======
+>>>>>>> origin/master
 	BuatJudul();
 	BuatMenu();
 }
@@ -31,8 +43,12 @@ void MainMenu()
 void UserMenu()
 {
 	clrscr();
+<<<<<<< HEAD
 	HideCursor();
 	BuatJudul2();
+=======
+	BuatJudul();
+>>>>>>> origin/master
 	BuatMenu2();
 }
 
@@ -68,6 +84,7 @@ void BuatJudul()
     }
 }
 
+<<<<<<< HEAD
 void BuatJudul2()
 //Deksripsi : prosedur menulis judul "Wordament Zero" versi login di tengah layar
 {
@@ -105,6 +122,8 @@ void BuatJudul2()
     }
 }
 
+=======
+>>>>>>> origin/master
 void BuatMenu()
 // Deskripsi : prosedur membuat menu utama
 {
@@ -303,8 +322,12 @@ void BuatMenu()
        	{
        		// Keluar
        		gotoxy(45,18);
+<<<<<<< HEAD
     		printf("Bye Bye\n");
     		ShowCursor();
+=======
+    		printf("Bye Bye\n");\
+>>>>>>> origin/master
         	break;
        	}
 	}
@@ -314,11 +337,18 @@ void BuatMenu2()
 // Deskripsi : prosedur membuat user menu (menu setelah login)
 {
     // Kamus
+<<<<<<< HEAD
     boolean end,played;
 
     // Algoritma
     end = false;
     played = false;
+=======
+    boolean end;
+
+    // Algoritma
+    end = false;
+>>>>>>> origin/master
     absis = 45;
     ordinat = 7;
     lokasi = 'p';
@@ -482,6 +512,7 @@ void BuatMenu2()
        		// Title
        		clrscr();
        		BuatSubJudul();
+<<<<<<< HEAD
        		//if (!played)
        		//{
        			// Pengaktifan dict
@@ -495,6 +526,17 @@ void BuatMenu2()
        		BuatBoard();
     		// Pengambilan template board
     		getBoard(numboard, &M);
+=======
+       		// Pengaktifan dict
+       		getDictionary(&K);
+       		// Pembuatan UI board
+       		BuatBoard();
+       		// Pembuatan matriks
+       		MakeMATRIKS(&M);
+    		CreateEmpty(&S);
+    		// Pengambilan template board
+    		getBoard(3, &M);
+>>>>>>> origin/master
     		// Pengisian UI board dengan template
     		IsiBoard(&M);
     		// Inisialisasi UI board - matriks
@@ -519,17 +561,26 @@ void BuatMenu2()
         		}
         		endK = false;
     		}
+<<<<<<< HEAD
     		getch();
     		UserMenu();
     		played = true;
     		endGame = false;
+=======
+>>>>>>> origin/master
        		break;
        	}
     case 'b':
        	{
      		// Ke Select Board 
+<<<<<<< HEAD
        		ChooseBoard();
        		UserMenu();
+=======
+       		clrscr();
+       		BuatSubJudul();
+       		LoginScreen();
+>>>>>>> origin/master
        		break;
        	}
     case 'm':
@@ -659,9 +710,13 @@ void RegisterScreen()
 	absis = 31;
 	ordinat = 12;
 	gotoxy(absis,ordinat);
+<<<<<<< HEAD
 	ShowCursor();
 	scanf("%s",registername);
 	HideCursor();
+=======
+	scanf("%s",registername);
+>>>>>>> origin/master
 	//gotoxy login setelah klik enter
 	// Authentication
 	valid = false;
@@ -810,7 +865,11 @@ void LoginScreen()
 {
 	// Kamus Lokal
 	char username[30];
+<<<<<<< HEAD
 	boolean end,valid,retry;
+=======
+	boolean end,valid;
+>>>>>>> origin/master
 		
 	// Algoritma
 	// Bagian Form
@@ -859,16 +918,37 @@ void LoginScreen()
 	absis = 31;
 	ordinat = 12;
 	gotoxy(absis,ordinat);
+<<<<<<< HEAD
 	ShowCursor();
 	scanf("%s",username);
 	HideCursor();
 	//gotoxy login setelah klik enter
+=======
+	scanf("%s",username);
+	//gotoxy login setelah klik enter
+	// Authentication
+	valid = false;
+	if(!loginUser(username))
+	{
+		gotoxy(31,14);
+		printf("Username not registered");
+	}
+	else
+	{
+		valid = true;
+		gotoxy(31,14);
+		printf("                              ");
+		gotoxy(31,14);
+		printf("Hello, %s", username);
+	}
+>>>>>>> origin/master
 	absis = 32;
 	ordinat = 16;
 	gotoxy(absis,ordinat);
 	
 	lokasi = 'l';
 	end = false;
+<<<<<<< HEAD
 	retry = false;
 		
 	printf("> Login");
@@ -954,11 +1034,107 @@ void LoginScreen()
 					retry = true;
 				}
 				break;
+=======
+	if(valid)
+	{
+		printf("> Login");
+		while(!end)
+		{
+			switch(getch())
+			{
+				case 'd':
+				{
+					if(absis < 46)
+					{
+						gotoxy(absis,ordinat);
+						printf("       ");
+						gotoxy(absis,ordinat);
+						printf("Login");
+						absis = 46;
+						gotoxy(absis,ordinat);
+						printf("> Back to Menu");
+						lokasi = 'b';
+					}
+					break;
+				}
+				case 'a':
+				{
+					if(absis > 32)
+					{
+						gotoxy(absis,ordinat);
+						printf("                 ");
+						gotoxy(absis,ordinat);
+						printf("Back to Menu");
+						absis = 32;
+						gotoxy(absis,ordinat);
+						printf("> Login");
+						lokasi = 'l';
+					}
+					break;
+				}
+				case 's':
+				{
+					end = true;
+					break;
+				}
+			}
+		}
+	}
+	else
+	{
+		gotoxy(absis,ordinat);
+		printf("          ");
+		gotoxy(absis,ordinat);
+		printf("> Retry");
+		while(!end)
+		{
+			switch(getch())
+			{
+				case 'd':
+				{
+					if(absis < 46)
+					{
+						gotoxy(absis,ordinat);
+						printf("       ");
+						gotoxy(absis,ordinat);
+						printf("Retry");
+						absis = 46;
+						gotoxy(absis,ordinat);
+						printf("> Back to Menu");
+						lokasi = 'b';
+					}
+					break;
+				}
+				case 'a':
+				{
+					if(absis > 32)
+					{
+						gotoxy(absis,ordinat);
+						printf("                 ");
+						gotoxy(absis,ordinat);
+						printf("Back to Menu");
+						absis = 32;
+						gotoxy(absis,ordinat);
+						printf("> Retry");
+						lokasi = 'l';
+					}
+					break;
+				}
+				case 's':
+				{
+					end = true;
+					break;
+				}
+>>>>>>> origin/master
 			}
 		}
 	}
 	
 	
+<<<<<<< HEAD
+=======
+	
+>>>>>>> origin/master
 	if(lokasi == 'b')
 	{
 		MainMenu();
@@ -966,21 +1142,30 @@ void LoginScreen()
 	else
 	if((lokasi == 'l')&&(valid))
 	{
+<<<<<<< HEAD
 		loginUser(username);
 		gotoxy(31,14);
 		printf("                              ");
 		gotoxy(31,14);
 		printf("Welcome back, %s\n", username);
 		usleep(750000);
+=======
+>>>>>>> origin/master
 		UserMenu();
 	}
 	else
 	if((lokasi == 'l')&&(!valid))
 	{
+<<<<<<< HEAD
+=======
+		gotoxy(31,14);
+		printf("                              ");
+>>>>>>> origin/master
 		LoginScreen();
 	}
 }
 
+<<<<<<< HEAD
 void ChooseBoard()
 {
 	// Kamus Lokal
@@ -1040,6 +1225,8 @@ void ChooseBoard()
 	}
 }
 
+=======
+>>>>>>> origin/master
 
 /* --------------------------------------BOARD---------------------------------------- */
 void BuatBoard()
