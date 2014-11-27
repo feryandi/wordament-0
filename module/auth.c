@@ -237,6 +237,11 @@ boolean loginUser(char word[30]) {
     }
 }
 
+void logoutUser() {
+	logged = false;
+	username[0] = '\0';
+}
+
 
 boolean cekUser(char word[30]) {
 	/* Kamus Lokal */

@@ -29,8 +29,8 @@ void Push (Stack *S, infotype X)
 /* F.S. X menjadi TOP yang baru, TOP bertambah 1 */
 {
     TOP(*S)++;
-    PosX(Infotop(*S)) = PosX(X);
-    PosY(Infotop(*S)) = PosY(X);
+    SetAbsis(&Pos(Infotop(*S)), GetAbsis(Pos(X)));
+    SetOrdinat(&Pos(Infotop(*S)), GetOrdinat(Pos(X)));
     Info(Infotop(*S)) = Info(X);
 }
 void Pop (Stack *S, infotype *X)
@@ -38,8 +38,8 @@ void Pop (Stack *S, infotype *X)
 /* I.S. S tidak kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 {
-    PosX(*X) = PosX(Infotop(*S));
-    PosY(*X) = PosY(Infotop(*S));
+	SetAbsis(&Pos(*X), GetAbsis(Pos(Infotop(*S))));
+    SetOrdinat(&Pos(*X), GetOrdinat(Pos(Infotop(*S))));
     Info(*X) = Info(Infotop(*S));
     TOP(*S)--;
 }

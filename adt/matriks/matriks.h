@@ -17,5 +17,7 @@ void MakeMATRIKS(MATRIKS *M);
 void SetEl(MATRIKS *M,int i,int j,eltype X);
 void TulisMATRIKS(MATRIKS M);
 eltype GetElmt(MATRIKS M,indeks i,indeks j);
+void Transpose (MATRIKS *M);
+void FlipVertical (MATRIKS *M);
 
 #endif

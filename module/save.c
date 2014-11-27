@@ -125,14 +125,14 @@ void save(char word[18], int target, char user[62], int t) {
             }
             fprintf(file_save, "\n");
         }
-        printf("procced");
+        //printf("procced");
 
         fprintf(file_save, ".");
         fclose(file_save);
 
     } else {
 
-        printf("cannot procced..\n");
+        //printf("cannot procced..\n");
 
     }
 }
@@ -142,35 +142,35 @@ void saveWord(char word[18], int target, char user[62]) {
 }
 
 void saveScore(int score, int target, char user[62]) {
-    char time_now[16];
-    char buff[12];
-    char word[20];
+    char time_now[17];
+    char buffsc[17];
+    char word[25];
 
 	time_now[0] = '\0';
-	buff[0] = '\0';
+	buffsc[0] = '\0';
 	word[0] = '\0';
 
     time_t t = time(NULL);
     struct tm waktu = *localtime(&t);
 
 
-    sprintf(buff, "%d", waktu.tm_mday);
-    strcat(time_now, buff);
+    sprintf(buffsc, "%d", waktu.tm_mday);
+    strcat(time_now, buffsc);
 
-    sprintf(buff, " %d", waktu.tm_mon + 1);
-    strcat(time_now, buff);
+    sprintf(buffsc, " %d", waktu.tm_mon + 1);
+    strcat(time_now, buffsc);
 
-    sprintf(buff, " %d", waktu.tm_year + 1900);
-    strcat(time_now, buff);
+    sprintf(buffsc, " %d", waktu.tm_year + 1900);
+    strcat(time_now, buffsc);
 
-    sprintf(buff, " %d", waktu.tm_hour);
-    strcat(time_now, buff);
+    sprintf(buffsc, " %d", waktu.tm_hour);
+    strcat(time_now, buffsc);
 
-    sprintf(buff, " %d", waktu.tm_min);
-    strcat(time_now, buff);
+    sprintf(buffsc, " %d", waktu.tm_min);
+    strcat(time_now, buffsc);
 
-    sprintf(buff, "%d ", score);
-    strcat(word, buff);
+    sprintf(buffsc, "%d ", score);
+    strcat(word, buffsc);
     strcat(word, time_now);
 
     save(word, target, user, 2);

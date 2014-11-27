@@ -1,6 +1,7 @@
 #ifndef STACK_H_INCLUDED
 #define STACK_H_INCLUDED
 #include "boolean.h"
+#include "../point/point.c"
 /* MODUL STACK */
 /* Deklarasi stack yang diimplementasi dengan tabel kontigu alokasi statik */
 /* dan ukuran sama */
@@ -9,13 +10,11 @@
 #define MaxEl 18
 #define TOP(S) (S).TOP
 #define Infotop(S) (S).T[(S).TOP]
-#define PosX(K) (K).posx
-#define PosY(K) (K).posy
+#define Pos(K) (K).pos
 #define Info(K) (K).info
 
 typedef struct {
-    int posx;
-    int posy;
+    POINT pos;
     char info;
 } kar;
 typedef kar infotype;

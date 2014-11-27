@@ -35,23 +35,28 @@ printf("%snormal\n", KNRM);
 /* Menu */
 /* CORE */
 void BuatJudul();
-<<<<<<< HEAD
 void BuatJudul2();
-=======
->>>>>>> origin/master
 void BuatMenu();
 void BuatMenu2();
 void BuatSubJudul();
 void LoginScreen();
 void RegisterScreen();
+void MyHSScreen();
+void AllHSScreen();
+
+void Bold();
+void UnBold();
+
+/* RESULT */
+void BuatSubJudulResult();
+void BuatBoardResult();
 
 /* CREATE */
 void MainMenu();
 void UserMenu();
-<<<<<<< HEAD
 void ChooseBoard();
-=======
->>>>>>> origin/master
+void Welcome();
+void ResultBoard();
 
 /* Board */
 void BuatBoard();

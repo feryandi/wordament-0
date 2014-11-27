@@ -24,13 +24,15 @@ void initBoard ()
 	}
 }
 
-void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
+void PointerBoard(MATRIKS *M, Stack *S, char *kata, boolean *endK)
 {
     // Kamus Lokal
-    int i, j;
-    
+    int i, j, score;
+    char cc;
+
     // Algoritma
     gotoxy(absis,ordinat);
+
 
     switch(getch())
     {
@@ -38,12 +40,20 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
     		{
 				if((absis >= 36)&&(ordinat >= 11))
 		    		{
+						if(!aktif)
+						{
+							HapusSimbol(absis,ordinat);
+						}
 						absis -= 8;
 						ordinat -= 4;
 						gotoxy(absis,ordinat);
+						if(!aktif)
+                    {
+                    	PointerAktif();
+                    }
 						if (aktif == true)
 						{
-							SimbolAktif(M, S);
+							SimbolAktif((*M), S);
 		            	}
 		            }
 				break;
@@ -52,11 +62,19 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
 			{
 				if (ordinat >= 11)
 				{
+					if(!aktif)
+						{
+							HapusSimbol(absis,ordinat);
+						}
 					ordinat -= 4;
 					gotoxy(absis,ordinat);
+					if(!aktif)
+                    {
+                    	PointerAktif();
+                    }
 					if (aktif == true)
 					{
-						SimbolAktif(M, S);
+						SimbolAktif((*M), S);
 					}
 				}
 				break;
@@ -65,12 +83,20 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
 			{
 				if ((absis <= 44)&&(ordinat >= 10))
 				{
+					if(!aktif)
+						{
+							HapusSimbol(absis,ordinat);
+						}
 					absis += 8;
 					ordinat -= 4;
 					gotoxy(absis,ordinat);
+					if(!aktif)
+                    {
+                    	PointerAktif();
+                    }
 					if (aktif == true)
 					{
-						SimbolAktif(M, S);
+						SimbolAktif((*M), S);
 					}
 				}
 				break;
@@ -79,11 +105,19 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
             {
                 if (absis >= 36)
                 {
+                    if(!aktif)
+						{
+							HapusSimbol(absis,ordinat);
+						}
                     absis -= 8;
                     gotoxy(absis,ordinat);
+                    if(!aktif)
+                    {
+                    	PointerAktif();
+                    }
                     if (aktif == true)
                     {
-                        SimbolAktif(M, S);
+                        SimbolAktif((*M), S);
                 	}
                 }
                 break;
@@ -92,11 +126,19 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
             {
                 if (absis <= 44)
                 {
+                    if(!aktif)
+						{
+							HapusSimbol(absis,ordinat);
+						}
                     absis += 8;
                     gotoxy(absis,ordinat);
+                    if(!aktif)
+                    {
+                    	PointerAktif();
+                    }
                     if (aktif == true)
                     {
-                        SimbolAktif(M, S);
+                        SimbolAktif((*M), S);
                 	}
                 }
                 break;
@@ -105,12 +147,20 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
             {
                 if ((absis >= 36)&&(ordinat <= 15))
                 {
+                    if(!aktif)
+						{
+							HapusSimbol(absis,ordinat);
+						}
                     absis -= 8;
                     ordinat += 4;
                     gotoxy(absis,ordinat);
+                    if(!aktif)
+                    {
+                    	PointerAktif();
+                    }
                     if (aktif == true)
                     {
-                        SimbolAktif(M, S);
+                        SimbolAktif((*M), S);
                 	}
                 }
                 break;
@@ -119,11 +169,19 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
             {
                 if (ordinat <= 15)
                 {
+                    if(!aktif)
+						{
+							HapusSimbol(absis,ordinat);
+						}
                     ordinat += 4;
                     gotoxy(absis,ordinat);
+                    if(!aktif)
+                    {
+                    	PointerAktif();
+                    }
                     if (aktif == true)
                     {
-                        SimbolAktif(M, S);
+                        SimbolAktif((*M), S);
                 	}
                 }
                 break;
@@ -132,46 +190,65 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
             {
                 if ((absis <= 44)&&(ordinat <= 15))
                 {
+                    if(!aktif)
+						{
+							HapusSimbol(absis,ordinat);
+						}
                     absis += 8;
                     ordinat += 4;
                     gotoxy(absis,ordinat);
+                    if(!aktif)
+                    {
+                    	PointerAktif();
+                    }
                     if (aktif == true)
                     {
-                        SimbolAktif(M, S);
+                        SimbolAktif((*M), S);
                 	}
                 }
                 break;
             }
+		case 'r':
+            {
+            	if (aktif == false)
+            	{
+		        	Rotate(M);
+		        	gotoxy(61,12);
+		        	printf("                ");
+		        	gotoxy(61,12);
+		        	printf("%s",kata);
+		        	gotoxy(61,14);
+		        	printf("                ");
+		        	BuatBoard();
+		        	IsiBoard(M);
+					initBoard();
+            	}
+            	break;
+            }            
         case 's':
             {
                 simpanabsis = absis;
                 simpanordinat = ordinat;
                 if (aktif == false)
                 {
-                    SimbolAktif(M, S);
+                    SimbolAktif((*M), S);
                     aktif = true;
                 }
                 else
                 {
                     EndWord(S, (kata), endK);
+					//Score(S, &score, &kata);
+					//printf("score: %d", score);
+					PointerAktif();
 				}
-                break;
-            }
-        case 'l':
-            {
-                gotoxy(30,22);
-                endGame = true;
-                printf("\r                                        ");
-                gotoxy(30,22);
-                printf("GAME ENDS");
                 break;
             }
         default:
         	{
-                gotoxy(30,22);
+                /*gotoxy(30,22);
                 printf("\r                                                ");
                 gotoxy(30,22);
-            	printf("doesn't recognized the input");
+            	printf("doesn't recognized the input");*/
             	break;
             }
 	}
@@ -180,36 +257,38 @@ void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK)
 void SimbolAktif(MATRIKS M, Stack *S)
 {
     // Kamus Lokal
-    infotype K;
+    infotype A;
 
     // Algoritma
     if (discovered[((ordinat+1)/4-1)][((((absis+8)/4)-7)/2)])
     {
 
-        while ((PosX(Infotop(*S)) != absis) || (PosY(Infotop(*S)) != ordinat))
+        while ((GetAbsis(Pos(Infotop(*S))) != absis) || (GetOrdinat(Pos(Infotop(*S))) != ordinat))
         {
-            HapusSimbol(PosX(Infotop(*S)), PosY(Infotop(*S)));
-            discovered[((PosY(Infotop(*S))+1)/4-1)][((((PosX(Infotop(*S))+8)/4)-7)/2)] = false;
-            Pop(S, &K);
+            HapusSimbol(GetAbsis(Pos(Infotop(*S))), GetOrdinat(Pos(Infotop(*S))));
+            discovered[((GetOrdinat(Pos(Infotop(*S)))+1)/4-1)][((((GetAbsis(Pos(Infotop(*S)))+8)/4)-7)/2)] = false;
+            Pop(S, &A);
         }
-        absis = PosX(Infotop(*S));
-        ordinat = PosY(Infotop(*S));
+        absis = GetAbsis(Pos(Infotop(*S)));
+        ordinat = GetOrdinat(Pos(Infotop(*S)));
         gotoxy(absis, ordinat);
     }
     else
     {
         gotoxy(absis-1,ordinat);
-        printf("[");
+        Bold();
+        printf("%s[", KRED);
 
         gotoxy(absis+1,ordinat);
-        printf("]");
+        printf("]%s", KNRM);
+        UnBold();
         gotoxy(absis,ordinat);
 
-        PosX(K) = absis;
-        PosY(K) = ordinat;
-        Info(K) = GetElmt(M, ((ordinat+1)/4-1), ((((absis+8)/4)-7)/2));
+        SetAbsis(&Pos(A), absis);
+        SetOrdinat(&Pos(A), ordinat);
+        Info(A) = GetElmt(M, ((ordinat+1)/4-1), ((((absis+8)/4)-7)/2));
 
-        Push(S, K);
+        Push(S, A);
         //gotoxy(30, 24 + count);
         //printf("%d %d %c", PosX(Infotop(*S)), PosY(Infotop(*S)), Info(Infotop(*S)));
 
@@ -217,6 +296,16 @@ void SimbolAktif(MATRIKS M, Stack *S)
         discovered[((ordinat+1)/4-1)][((((absis+8)/4)-7)/2)] = true;
         count++;
     }
+}
+
+void PointerAktif()
+{
+	gotoxy(absis-1,ordinat);
+    printf("[");
+
+    gotoxy(absis+1,ordinat);
+    printf("]");
+    gotoxy(absis,ordinat);
 }
 
 void HapusSimbol(int x, int y)
@@ -233,8 +322,8 @@ void HapusSimbol(int x, int y)
 
 void EndWord(Stack *S, char kata[18], boolean *endK)
 {
-    // Kamus Lokal
-    infotype K;
+    // Aamus Lokal
+    infotype A;
     int i, j;
 
     // Algoritma
@@ -242,14 +331,14 @@ void EndWord(Stack *S, char kata[18], boolean *endK)
     aktif = false;
     while (IsEmpty(*S) == false)
     {
-        Pop(S, &K);
-        (kata)[TOP(*S)] = Info(K);
-        HapusSimbol(PosX(K), PosY(K));
+        Pop(S, &A);
+        (kata)[TOP(*S)] = Info(A);
+        HapusSimbol(GetAbsis(Pos(A)), GetOrdinat(Pos(A)));
     }
     (kata)[i] = '\0';
 
-    absis = PosX(K);
-    ordinat = PosY(K);
+    absis = GetAbsis(Pos(A));
+    ordinat = GetOrdinat(Pos(A));
     for (i=1;i<=4;i++) {
         for (j=1;j<=4;j++) {
             discovered[i][j] = false;
@@ -263,7 +352,44 @@ void EndWord(Stack *S, char kata[18], boolean *endK)
     (*endK) = true;
 }
 
-/*
+/* ADT Set */
+void addFoundWord ( SetStr *E, char word[18] ) {
+	SetSetEl(E, NbElmt(*E), word);
+	SetNeff(E, (NbElmt(*E) + 1));
+	//TulisIsiTab(E);
+}
+
+boolean isFound ( SetStr E, char word[18] ) {
+	int i, n;
+	ElType *kata;
+	boolean found;
+	
+	if ( NbElmt(E) != 0 ) {
+		for ( i=0; i<NbElmt(E); i++ ) {
+
+			n = 0;
+			found = true;
+			while ( ( (E.TI[i][n] != '\0' ) || (word[n] != '\0') ) && ( found ) ) {
+				if (E.TI[i][n] != word[n]) {
+					found = false;
+				}
+				n++;
+			}
+
+			if ( found == true ) {
+				break;
+			}
+		} 
+	} else {
+		found = false;
+	}
+
+	return found;
+}
+
+
+/* End of ADT Set */
+
 int Map (char key)
 {
 	StrMap *sm;
@@ -308,17 +434,30 @@ int Map (char key)
 	}
 }
  
-void Score(Stack *S, int *score)
+int Score(char kata[18])
 {
 	int sum=0;
 	int count=0;
-	char X;
-	while (!IsEmpty(*S)) {
-		Pop(S,&X);
+	int score=0;
+	//boolean endK;
+	//EndWord(S,(*kata),&endK);
+	do {
+		sum += Map((kata)[count]);
 		count++;
-		sum = sum+Map(X);
-		}
-	score = sum*count;
-	if (count>=10)
+	} while (kata[count] != '\0');
+	(score) = sum*(count);
+	if (count>=10) {
 		score += 100;
-}*/
+	}
+
+	return score; 
+}
+
+void Rotate (MATRIKS *M)
+{
+	// Kamus Lokal
+	
+	// Algoritma
+	Transpose (M);
+	FlipVertical(M);
+}

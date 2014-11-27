@@ -1,5 +1,11 @@
 #include "global.h"
 
+int selectedBoard;
+
+void selectBoard (int board) {
+	selectedBoard = board;
+}
+
 void getBoard (int target, MATRIKS *M) {
     /* Kamus Lokal */
     int i, n;
@@ -47,15 +53,14 @@ void getBoard (int target, MATRIKS *M) {
 
 }
 
-Queue getSuggestion ( int target, char user[62] ) {
+void getSuggestion ( Queue *Q, int target, char user[62] ) {
     /* Kamus Lokal */
     int i;
     char file_dir[90];
     char *board;
     char word[18];
-    Queue Q;
 
-    CreateEmptyQ(&Q, 1000);
+    CreateEmptyQ(Q, 1000);
 
     /* Algoritma */
     file_dir[0] = '\0';
@@ -95,15 +100,14 @@ Queue getSuggestion ( int target, char user[62] ) {
         for (i = 1; i <= CKata.Length; i++ ){
             word[i-1] = CKata.TabKata[i];
         }
-        word[i-2] = '\0';
+        word[i-1] = '\0';
 
-        AddQ(&Q, realHash(word));
-        printf("s: %d\n", realHash(word));
+        AddQ(Q, realHash(word));
+        //printf("s: %d\n", realHash(word));
 
         ADVKATA(1);
     }
 
-    return Q;
 
 }
 
@@ -161,7 +165,7 @@ void GetSuggestion (char word[18], int target, char user[62]) {
             for ( i = 1; i <= CKata.Length; i++ ) {
                 suggest[i-1] = CKata.TabKata[i];
             }
-            suggest[i-2] = '\0';
+            suggest[i-1] = '\0';
 
             EndKata = true;
         } else {
@@ -243,6 +247,8 @@ TimeArray ListUserHS (int target, char user[62]) {
     char *board;
 
     /* Algoritma */
+	temp.NbElmt = 0;
+
     file_dir[0] = '\0';
 
 	strcat(file_dir, "../saves/");
@@ -290,6 +296,7 @@ TimeArray ListUserHS (int target, char user[62]) {
 
         switch (counter) {
         case 1:
+            temp.get[temp.NbElmt].id = 0;
             temp.get[temp.NbElmt].s = buff;
             break;
         case 2:
@@ -310,6 +317,7 @@ TimeArray ListUserHS (int target, char user[62]) {
             temp.NbElmt += 1;
             break;
         default:
+            temp.get[temp.NbElmt].id = 0;
             temp.get[temp.NbElmt].t.SS = 00;
         }
 
@@ -321,26 +329,36 @@ TimeArray ListUserHS (int target, char user[62]) {
     return temp;
 }
 
+void Dealokator(addressL P) {
+	addressL Q;	
 
-/*List ListAllHS (int target) {
-    /* Kamus Lokal
-    List temp;
+	while ( P != NilAdd ) {
+		Q = P;
+		P = NextL(P);
+		Dealokasi(Q);
+	}
+}
+
+void ListAllHS (int target, char user_list[90][63], List *temp) {
+    /* Kamus Lokal */
+	addressL P, Q;
     char file_dir[90];
     char file_user[90];
     char file_hs[90];
-    char user_list[90][63];
+	boolean skip;
     int counter;
-    int i, n, user_count;
+    int i, n, user_count, g, h;
     int buff;
     char *board;
 
-    /* Algoritma
-    CreateList(&temp);
+    /* Algoritma */
+    CreateList(temp);
     file_dir[0] = '\0';
     file_user[0] = '\0';
+    file_hs[0] = '\0';
 
 	strcat(file_user, "../saves/userlist.txt");
-	strcat(file_dir, "../saves/");
+	strcat(file_dir, "../saves/board");
 
     switch (target) {
     case 0: board = "0"; break;
@@ -353,16 +371,10 @@ TimeArray ListUserHS (int target, char user[62]) {
     case 7: board = "7"; break;
     case 8: board = "8"; break;
     case 9: board = "9"; break;
-    default: board = "3";
+    default: board = "0";
     }
 
-	if ( target == 99 ) {
-        strcat(file_dir, "template");
-    } else {
-        strcat(file_dir, "board");
-        strcat(file_dir, board);
-	}
-
+    strcat(file_dir, board);
     strcat(file_dir, "/highscore/");
 
 
@@ -374,52 +386,164 @@ TimeArray ListUserHS (int target, char user[62]) {
     while (!EndKata) {
 
         for ( i = 1; i <= CKata.Length; i++ ) {
-            user_list[n][i-1] = CKata.TabKata[i];
+            (user_list)[n][i-1] = CKata.TabKata[i];
         }
-        user_list[n][i-1] = '\0';
+        (user_list)[n][i-1] = '\0';
 
-        InsVLast(&temp, n);
+        InsVLast(temp, n);
 
         ADVKATA(1);
         n++;
     }
 
-    user_count = n - 1;
+    user_count = n;
 
-    STARTKATA(file_dir,"r", 2);
-    i = 0;
-    counter = 0;
-    n = 0;
+	P = FirstL(*temp);
+
+	for ( i = 1; i <= user_count; i++ ) {
+
+		file_hs[0] = '\0';
+    	strcat(file_hs, file_dir);
+
+		strcat(file_hs, user_list[InfoL(P)]);
+    	strcat(file_hs, ".txt");
+
+		//printf("%s\n", file_hs);
+
+		STARTKATA(file_hs,"r", 2);
+		counter = 0;
+
+		n = 0;
+		skip = false;
+
+		while (!EndKata) {
 
 
-/*
+		    if ( counter == 6 ) {
+		        counter = 0;
+				skip = false;
+		    }
+		    counter++;
 
+		    buff = 0;
 
-    while (!EndKata) {
+		    for ( g = 1; g <= CKata.Length; g++ ) {
+		        buff = (buff * 10) + CKata.TabKata[g] - 48;
+		    }
 
-        if ( counter == 6 ) {
-            counter = 0;
-        }
-        counter++;
+			//printf("%d-", buff);
 
-        buff = 0;
+			if ( !skip ) {
+				switch (counter) {
+				case 1:
+					if ( ( FirstL(ChildL(P)) == NilAdd ) ) {
+				    	InsVLast(&ChildL(P), buff);
+					} else if ( buff > InfoL(FirstL(ChildL(P))) ) {
+						FirstL(ChildL(P)) = NilAdd;
+				    	InsVLast(&ChildL(P), buff);
+					} else {
+						skip = true;
+					}
+					break;
+				case 2:
+				case 3:
+				case 4:
+				case 5:
+				case 6:
+				    InsVLast(&ChildL(P), buff);
+				    break;
+				default:
+				    printf("invalid data");
+				}
+			}
 
-        for ( i = 1; i <= CKata.Length; i++ ) {
-            buff = (buff * 10) + CKata.TabKata[i] - 48;
-        }
+		    ADVKATA(2);
 
-        switch (counter) {
-        case 1:
-            InsVLast(&Child(), buff);
-            break;
-        default:
-            temp.get[temp.NbElmt].t.SS = 00;
-        }
+			//Q = NextL(Q);
 
-        ADVKATA(2);
-    }
+    	}
 
-    temp = SortByHS(temp);
+		P = NextL(P);
+	}
 
-    return temp;
-}*/
+}
+
+TimeArray ListToArraySorted ( List L ) {
+	TimeArray temp;
+	addressL P, Q;
+	int i = 0;
+
+	temp.NbElmt = 0;
+
+	P = FirstL(L);
+	while ( P != NilAdd ) {
+		Q = FirstL(ChildL(P));
+
+		if ( Q != NilAdd ) {
+			temp.get[temp.NbElmt].id = InfoL(P);
+			i = 0;			
+
+			while ( Q != NilAdd ) {
+				i++;
+
+				switch (i) {
+					case 1:
+						temp.get[temp.NbElmt].s = InfoL(Q);
+						break;
+					case 2:
+						temp.get[temp.NbElmt].w.D = InfoL(Q);
+						break;
+					case 3:
+						temp.get[temp.NbElmt].w.M = InfoL(Q);
+						break;
+					case 4:
+						temp.get[temp.NbElmt].w.Y = InfoL(Q);
+						break;
+					case 5:
+						temp.get[temp.NbElmt].t.HH = InfoL(Q);
+						break;
+					case 6:
+						temp.get[temp.NbElmt].t.MM = InfoL(Q);
+						temp.get[temp.NbElmt].t.SS = 00;
+						temp.NbElmt += 1;
+						break;
+					default:
+						temp.get[temp.NbElmt].id = 0;
+						temp.get[temp.NbElmt].t.SS = 00;
+				}
+
+				Q = NextL(Q);
+			}
+			printf("\n");
+		}
+
+		P = NextL(P);
+	}	
+
+	temp = SortByHS(temp);
+
+	return temp;
+	
+}
+
+void printListHS (char user_list[90][63], List L) {
+	addressL P, Q;
+
+	P = FirstL(L);
+	while ( P != NilAdd ) {
+		Q = FirstL(ChildL(P));
+
+		if ( Q != NilAdd ) {
+			printf("%s", user_list[InfoL(P)]);
+
+			while ( Q != NilAdd ) {
+				printf("%d ", InfoL(Q));
+
+				Q = NextL(Q);
+			}
+			printf("\n");
+		}
+
+		P = NextL(P);
+	}
+}

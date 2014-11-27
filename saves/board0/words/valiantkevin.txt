@@ -1,0 +1,8 @@
+CAB
+FIT
+BAR
+CART
+CAN
+BORN
+TORN
+.

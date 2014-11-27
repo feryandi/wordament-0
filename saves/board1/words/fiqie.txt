@@ -1,0 +1,8 @@
+BAR
+CAR
+SAW
+RED
+EAR
+ERA
+WIDE
+.

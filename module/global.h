@@ -11,12 +11,12 @@
 #include "../adt/matriks/matriks.c"
 #include "../adt/stack/stack.c"
 #include "../adt/queue/queue.c"
-//#include "../adt/list/list.c"
-//<<<<<<< HEAD
-#include "../UI/Interface.h"
-//=======
-//>>>>>>> origin/master
-//#include "../adt/array/array.c" HARUS PAKE ARRAY STRING, BANYAK BANGET YG HARUS DIGANTI
+#include "../adt/set/set.c"
+#include "../adt/map/strmap.c"
+#include "../adt/list/list.c"
+//#include "../adt/point/point.c"
+#include "../UI/Interface.h" //Ga usah diinclude lagi karena interface.c udah nginclude
+// Ada bagian di interface.h yang belom gua pindahin, nanti gua pindahin
 
 typedef struct {
     int NbElmt;
@@ -38,6 +38,7 @@ typedef struct {
     TANGGAL w;
     JAM t;
     int s;
+	int id;
 } HScore;
 
 typedef struct {
@@ -46,6 +47,15 @@ typedef struct {
 } TimeArray;
 
 extern TabKamus K;
+extern char username[30];
+extern boolean logged;
+extern boolean playing;
+extern int selectedBoard;
+extern boolean quitGame;
+
+/* */
+extern int absis;
+extern int ordinat;
 
 /* save.c */
 boolean searchWord (TabStr X, char word[18]);
@@ -58,11 +68,18 @@ void getBoard (int target, MATRIKS *M);
 void GetSuggestion (char word[18], int target, char user[62]);
 TimeArray SortByHS ( TimeArray T );
 TimeArray ListUserHS (int target, char user[62]);
+TimeArray ListToArraySorted ( List L );
 
 /* auth.c */
 boolean searchUser (TabStr X, char word[30]);
 boolean registerUser(char word[30]);
 boolean loginUser(char word[30]);
+
+/* dict.c */
+int getHash ( int multi, char word[18] );
+boolean isOnKamus (char word[18]);
+int realHash (char word[18]);
+void getDictionary(TabKamus (*T));
 
 /* word.c */
 void BuatJudul();
@@ -71,14 +88,16 @@ void BuatBoard();
 /* Tiap blok besar ukuran 5x3 (x y) */
 
 void IsiBoard(MATRIKS *M);
-void PointerBoard(MATRIKS M, Stack *S, char *kata, boolean *endK);
+void PointerBoard(MATRIKS *M, Stack *S, char *kata, boolean *endK);
 void PointerIsi();
 void SimbolAktif(MATRIKS M, Stack *S);
 void HapusSimbol(int x, int y);
 void EndWord(Stack *S, char kata[18], boolean *endK);
+void PointerAktif();
+void Rotate (MATRIKS *M);
 
 /*Pake ADT map */
 int Map (char key);
-void Score(Stack *S, int *score);
+int Score(char kata[18]);
 
 #endif

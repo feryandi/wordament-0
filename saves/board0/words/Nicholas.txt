@@ -1,0 +1,8 @@
+ROT
+FIT
+CAB
+BAT
+TAB
+HEAL
+BOA
+.

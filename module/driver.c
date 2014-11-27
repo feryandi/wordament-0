@@ -1,26 +1,50 @@
 #include "global.h"
+#include "word.c"
+//#include "load.c"
 #include "save.c"
-#include "load.c"
-#include "auth.c"
-#include "dict.c"
+#include "timer.c"
+#include "../UI/Interface.c"
 
 	/* Kamus Global */
     TimeArray test;
     TabKamus K;
     MATRIKS M;
     Queue Q;
+	List L;
     char matx[5][5];
     char word[18];
+	char user_list[90][63];
     int i, n, TotalWords, j, k;
-    boolean found;
+	addressL A;
+    boolean found,end;
 
 int main() {
 
+	clrscr();
+	MakeMATRIKS(&M);
+	end = false;
+	while (!end)
+	{
+		switch (getch())
+		{
+			case 'r':
+			{
+				gotoxy(0,0);
+				TulisMATRIKS(M);
+				Rotate(&M);
+				break;
+			}
+			case 'z':
+			{
+				end = true;
+			}
+		}
+	}
 	/* Algoritma */
+	//saveScore(973,0,"tests");
 /*
     saveWord("APYA", 3, "rakarukri");
 	saveWord("APYAZ", 3, "rakarukri");
-	saveScore(973,3,"feryandi");
 
 
     test = ListUserHS(3, "feryandi");
@@ -43,7 +67,7 @@ int main() {
             printf("%c", GetElmt(M,i,n));
         }
     }
-*/
+
     if (registerUser("aaa")) {
         printf("registered");
     } else {
@@ -54,7 +78,7 @@ int main() {
         printf("login auth");
     } else {
         printf("failed");
-    }
+    }*/
 
 
   /*  for ( i=0; i <= 109013; i++ ) {
@@ -62,18 +86,46 @@ int main() {
     }
 
 
-    getDictionary(&K);
 
     printf("\n");
     scanf("Cari kata: %s", word);
 
     if ( isOnKamus(word) ) { printf("found"); } else { printf("not found"); }
 
-    printf("%d", realHash("FOUND"));
+    getDictionary(&K);
+    printf("%d", realHash("HAT"));
 
-    Q = getSuggestion(3, "rakarukri");
+    getSuggestion(&Q, 1, "tests");
 
     TulisQueue(Q);
+
+
+	printf("Score = %d", Map('Q'));
+	
+    CreateList(&L);
 */
+	/*ListAllHS(1, user_list, &L);
+
+	printListHS(user_list, L);
+
+	test = ListToArraySorted(L);
+
+    printf("- - - - - - - - - - - -\n");
+    for ( i = 0; i < test.NbElmt; i++ ) {
+        printf("%s : %d (%d/%d/%d %d:%d)\n", user_list[test.get[i].id], test.get[i].s, test.get[i].w.D, test.get[i].w.M, test.get[i].w.Y, test.get[i].t.HH, test.get[i].t.MM);
+    }
+    printf("- - - - - - - - - - - -\n");
+
+/*
+	A = NextL(FirstL(L));
+
+	printf("%d", InfoL(A));
+	printf("%s", user_list[InfoL(A)]);
+
+
+	A = FirstL(ChildL(A));
+	printf("%d", InfoL(A));
+	*/
+
     return 0;
 }
