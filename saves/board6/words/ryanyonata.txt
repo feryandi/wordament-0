@@ -1,0 +1,6 @@
+RAT
+SMART
+BAT
+BAR
+BEN
+.
